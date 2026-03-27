@@ -1,0 +1,154 @@
+<?xml version="1.0" ?>
+<sdf version="1.8">
+  <world name="yahboomcar_world">
+
+    <physics name="1ms" type="ignored">
+      <max_step_size>0.001</max_step_size>
+      <real_time_factor>1.0</real_time_factor>
+    </physics>
+
+    <plugin filename="ignition-gazebo-physics-system" name="ignition::gazebo::systems::Physics"/>
+    <!-- 传感器（尤其激光）在 Ignition/Gazebo Sim 中通常依赖 ogre2 渲染管线；
+         若改成 ogre 可能出现“世界可跑但无任何 scan 话题”。 -->
+    <plugin filename="ignition-gazebo-sensors-system" name="ignition::gazebo::systems::Sensors">
+      <render_engine>ogre2</render_engine>
+    </plugin>
+    <plugin filename="ignition-gazebo-scene-broadcaster-system" name="ignition::gazebo::systems::SceneBroadcaster"/>
+
+    <light name="sun" type="directional">
+      <cast_shadows>true</cast_shadows>
+      <pose>0 0 10 0 0 0</pose>
+      <diffuse>0.8 0.8 0.8 1</diffuse>
+      <specular>0.2 0.2 0.2 1</specular>
+      <attenuation>
+        <range>1000</range>
+        <constant>0.9</constant>
+        <linear>0.01</linear>
+        <quadratic>0.001</quadratic>
+      </attenuation>
+      <direction>-0.5 0.1 -0.9</direction>
+    </light>
+
+    <model name="ground_plane">
+      <static>true</static>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>20 20 0.1</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>20 20 0.1</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.8 0.8 0.8 1</ambient>
+            <diffuse>0.8 0.8 0.8 1</diffuse>
+            <specular>0.8 0.8 0.8 1</specular>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- 障碍物：供激光与 costmap 检测，验证避障 -->
+    <model name="obstacle_box_1">
+      <pose>2.0 0 0.25 0 0 0</pose>
+      <static>true</static>
+      <link name="link">
+        <collision name="c">
+          <geometry><box><size>0.4 0.4 0.5</size></box></geometry>
+        </collision>
+        <visual name="v">
+          <geometry><box><size>0.4 0.4 0.5</size></box></geometry>
+          <material>
+            <ambient>0.9 0.2 0.2 1</ambient>
+            <diffuse>0.9 0.2 0.2 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+    <model name="obstacle_box_2">
+      <pose>-1.5 1.2 0.2 0 0 0</pose>
+      <static>true</static>
+      <link name="link">
+        <collision name="c">
+          <geometry><box><size>0.3 0.8 0.4</size></box></geometry>
+        </collision>
+        <visual name="v">
+          <geometry><box><size>0.3 0.8 0.4</size></box></geometry>
+          <material>
+            <ambient>0.2 0.2 0.9 1</ambient>
+            <diffuse>0.2 0.2 0.9 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- 诊断模型：独立激光，用于判断“世界传感器系统”是否正常。
+         若此模型能出 /world/.../model/test_lidar/link/link/sensor/lidar/scan，
+         则问题在 yahboomcar_X3 模型本体；否则问题在世界/渲染/驱动层。 -->
+    <model name="test_lidar">
+      <static>true</static>
+      <pose>0 2.0 0.3 0 0 0</pose>
+      <link name="link">
+        <inertial>
+          <mass>0.1</mass>
+          <inertia>
+            <ixx>0.0001</ixx>
+            <iyy>0.0001</iyy>
+            <izz>0.0001</izz>
+          </inertia>
+        </inertial>
+        <collision name="c">
+          <geometry>
+            <box><size>0.1 0.1 0.1</size></box>
+          </geometry>
+        </collision>
+        <visual name="v">
+          <geometry>
+            <box><size>0.1 0.1 0.1</size></box>
+          </geometry>
+        </visual>
+        <sensor name="lidar" type="gpu_lidar">
+          <topic>lidar</topic>
+          <update_rate>10</update_rate>
+          <ray>
+            <scan>
+              <horizontal>
+                <samples>640</samples>
+                <resolution>1</resolution>
+                <min_angle>-1.5708</min_angle>
+                <max_angle>1.5708</max_angle>
+              </horizontal>
+              <vertical>
+                <samples>1</samples>
+                <resolution>0.01</resolution>
+                <min_angle>0</min_angle>
+                <max_angle>0</max_angle>
+              </vertical>
+            </scan>
+            <range>
+              <min>0.08</min>
+              <max>10.0</max>
+              <resolution>0.01</resolution>
+            </range>
+          </ray>
+          <alwaysOn>1</alwaysOn>
+          <visualize>false</visualize>
+        </sensor>
+      </link>
+    </model>
+
+    <!-- 勿用 merge=true 包一层，易与内层 model 名冲突并触发 PoseRelativeToGraph cycle -->
+    <include>
+      <uri>model://yahboomcar_X3</uri>
+      <name>yahboomcar</name>
+      <pose>0 0 0.08 0 0 0</pose>
+    </include>
+
+  </world>
+</sdf>

@@ -1,0 +1,19 @@
+# OpenTCS 适配器下发的 (x, y, theta) 与 ROS map 坐标对齐说明
+# 桥接 TCP 里 GOAL 已是「米 + 弧度」且 frame 为 map 时，通常 scale=1、偏移=0 即可。
+#
+# 若 OpenTCS 用毫米或栅格索引，请改 scale / offset_*。
+
+description: >
+  线性近似：ros_x = opentcs_x * scale + offset_x，ros_y 同理；
+  ros_yaw = opentcs_yaw + yaw_offset_ros_minus_opentcs（弧度）。
+
+scale: 1.0
+offset_x: 0.0
+offset_y: 0.0
+# ROS 角 - OpenTCS 角；例如 OpenTCS 用度且已在外部换成弧度则此处常为 0
+yaw_offset_ros_minus_opentcs: 0.0
+
+# 示例地标（便于回归；脚本可读取校验）
+landmarks:
+  opentcs_example: [0.0, 0.0]
+  ros_expected_meters: [0.0, 0.0]

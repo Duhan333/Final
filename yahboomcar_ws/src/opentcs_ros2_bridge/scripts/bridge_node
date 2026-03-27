@@ -1,0 +1,5 @@
+#!/usr/bin/env python3
+"""Wrapper so ros2 launch finds the node in lib/opentcs_ros2_bridge/."""
+from opentcs_ros2_bridge.bridge_node import main
+import sys
+sys.exit(main() or 0)

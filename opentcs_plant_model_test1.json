@@ -1,0 +1,427 @@
+{
+  "name" : "test1",
+  "points" : [ {
+    "name" : "Point-A",
+    "position" : {
+      "x" : 1750,
+      "y" : 1750,
+      "z" : 0
+    },
+    "vehicleOrientationAngle" : 0.0,
+    "type" : "HALT_POSITION",
+    "layout" : {
+      "position" : {
+        "x" : 1750,
+        "y" : 1750
+      },
+      "labelOffset" : {
+        "x" : -10,
+        "y" : -20
+      },
+      "layerId" : 0
+    },
+    "vehicleEnvelopes" : [ ],
+    "maxVehicleBoundingBox" : {
+      "length" : 1000,
+      "width" : 1000,
+      "height" : 1000,
+      "referenceOffset" : {
+        "x" : 0,
+        "y" : 0
+      }
+    },
+    "properties" : [ ]
+  }, {
+    "name" : "Point-B",
+    "position" : {
+      "x" : 4250,
+      "y" : 4750,
+      "z" : 0
+    },
+    "vehicleOrientationAngle" : 0.0,
+    "type" : "HALT_POSITION",
+    "layout" : {
+      "position" : {
+        "x" : 4250,
+        "y" : 4750
+      },
+      "labelOffset" : {
+        "x" : -10,
+        "y" : -20
+      },
+      "layerId" : 0
+    },
+    "vehicleEnvelopes" : [ ],
+    "maxVehicleBoundingBox" : {
+      "length" : 1000,
+      "width" : 1000,
+      "height" : 1000,
+      "referenceOffset" : {
+        "x" : 0,
+        "y" : 0
+      }
+    },
+    "properties" : [ ]
+  }, {
+    "name" : "Point-C",
+    "position" : {
+      "x" : 9250,
+      "y" : 4250,
+      "z" : 0
+    },
+    "vehicleOrientationAngle" : 0.0,
+    "type" : "HALT_POSITION",
+    "layout" : {
+      "position" : {
+        "x" : 9250,
+        "y" : 4250
+      },
+      "labelOffset" : {
+        "x" : -10,
+        "y" : -20
+      },
+      "layerId" : 0
+    },
+    "vehicleEnvelopes" : [ ],
+    "maxVehicleBoundingBox" : {
+      "length" : 1000,
+      "width" : 1000,
+      "height" : 1000,
+      "referenceOffset" : {
+        "x" : 0,
+        "y" : 0
+      }
+    },
+    "properties" : [ ]
+  }, {
+    "name" : "Point-D",
+    "position" : {
+      "x" : 11250,
+      "y" : 1250,
+      "z" : 0
+    },
+    "vehicleOrientationAngle" : 0.0,
+    "type" : "HALT_POSITION",
+    "layout" : {
+      "position" : {
+        "x" : 11250,
+        "y" : 1250
+      },
+      "labelOffset" : {
+        "x" : -10,
+        "y" : -20
+      },
+      "layerId" : 0
+    },
+    "vehicleEnvelopes" : [ ],
+    "maxVehicleBoundingBox" : {
+      "length" : 1000,
+      "width" : 1000,
+      "height" : 1000,
+      "referenceOffset" : {
+        "x" : 0,
+        "y" : 0
+      }
+    },
+    "properties" : [ ]
+  } ],
+  "paths" : [ {
+    "name" : "Point-A --- Point-B",
+    "srcPointName" : "Point-A",
+    "destPointName" : "Point-B",
+    "length" : 3905,
+    "maxVelocity" : 1000,
+    "maxReverseVelocity" : 0,
+    "peripheralOperations" : [ ],
+    "locked" : false,
+    "layout" : {
+      "connectionType" : "DIRECT",
+      "controlPoints" : [ ],
+      "layerId" : 0
+    },
+    "vehicleEnvelopes" : [ ],
+    "properties" : [ ]
+  }, {
+    "name" : "Point-B --- Point-C",
+    "srcPointName" : "Point-B",
+    "destPointName" : "Point-C",
+    "length" : 5025,
+    "maxVelocity" : 1000,
+    "maxReverseVelocity" : 0,
+    "peripheralOperations" : [ ],
+    "locked" : false,
+    "layout" : {
+      "connectionType" : "DIRECT",
+      "controlPoints" : [ ],
+      "layerId" : 0
+    },
+    "vehicleEnvelopes" : [ ],
+    "properties" : [ ]
+  }, {
+    "name" : "Point-B --- Point-D",
+    "srcPointName" : "Point-B",
+    "destPointName" : "Point-D",
+    "length" : 7826,
+    "maxVelocity" : 1000,
+    "maxReverseVelocity" : 0,
+    "peripheralOperations" : [ ],
+    "locked" : false,
+    "layout" : {
+      "connectionType" : "DIRECT",
+      "controlPoints" : [ ],
+      "layerId" : 0
+    },
+    "vehicleEnvelopes" : [ ],
+    "properties" : [ ]
+  }, {
+    "name" : "Point-C --- Point-D",
+    "srcPointName" : "Point-C",
+    "destPointName" : "Point-D",
+    "length" : 3606,
+    "maxVelocity" : 1000,
+    "maxReverseVelocity" : 0,
+    "peripheralOperations" : [ ],
+    "locked" : false,
+    "layout" : {
+      "connectionType" : "DIRECT",
+      "controlPoints" : [ ],
+      "layerId" : 0
+    },
+    "vehicleEnvelopes" : [ ],
+    "properties" : [ ]
+  }, {
+    "name" : "Point-D --- Point-A",
+    "srcPointName" : "Point-D",
+    "destPointName" : "Point-A",
+    "length" : 9513,
+    "maxVelocity" : 1000,
+    "maxReverseVelocity" : 0,
+    "peripheralOperations" : [ ],
+    "locked" : false,
+    "layout" : {
+      "connectionType" : "DIRECT",
+      "controlPoints" : [ ],
+      "layerId" : 0
+    },
+    "vehicleEnvelopes" : [ ],
+    "properties" : [ ]
+  } ],
+  "locationTypes" : [ {
+    "name" : "LType-0001",
+    "allowedOperations" : [ "CHARGE", "Load", "Unload", "Move" ],
+    "allowedPeripheralOperations" : [ ],
+    "layout" : {
+      "locationRepresentation" : "NONE"
+    },
+    "properties" : [ ]
+  } ],
+  "locations" : [ {
+    "name" : "Location-0001",
+    "typeName" : "LType-0001",
+    "position" : {
+      "x" : 0,
+      "y" : 3500,
+      "z" : 0
+    },
+    "links" : [ {
+      "pointName" : "Point-A",
+      "allowedOperations" : [ "Move", "CHARGE", "Load", "Unload" ]
+    } ],
+    "locked" : false,
+    "layout" : {
+      "position" : {
+        "x" : 0,
+        "y" : 3500
+      },
+      "labelOffset" : {
+        "x" : -10,
+        "y" : -20
+      },
+      "locationRepresentation" : "DEFAULT",
+      "layerId" : 0
+    },
+    "properties" : [ ]
+  }, {
+    "name" : "Location-0002",
+    "typeName" : "LType-0001",
+    "position" : {
+      "x" : 4500,
+      "y" : 8000,
+      "z" : 0
+    },
+    "links" : [ {
+      "pointName" : "Point-B",
+      "allowedOperations" : [ "Move", "CHARGE", "Load", "Unload" ]
+    } ],
+    "locked" : false,
+    "layout" : {
+      "position" : {
+        "x" : 4500,
+        "y" : 8000
+      },
+      "labelOffset" : {
+        "x" : -10,
+        "y" : -20
+      },
+      "locationRepresentation" : "DEFAULT",
+      "layerId" : 0
+    },
+    "properties" : [ ]
+  }, {
+    "name" : "Location-0003",
+    "typeName" : "LType-0001",
+    "position" : {
+      "x" : 11000,
+      "y" : 6500,
+      "z" : 0
+    },
+    "links" : [ {
+      "pointName" : "Point-C",
+      "allowedOperations" : [ "Move", "CHARGE", "Load", "Unload" ]
+    } ],
+    "locked" : false,
+    "layout" : {
+      "position" : {
+        "x" : 11000,
+        "y" : 6500
+      },
+      "labelOffset" : {
+        "x" : -10,
+        "y" : -20
+      },
+      "locationRepresentation" : "DEFAULT",
+      "layerId" : 0
+    },
+    "properties" : [ ]
+  }, {
+    "name" : "Location-0004",
+    "typeName" : "LType-0001",
+    "position" : {
+      "x" : 14000,
+      "y" : 500,
+      "z" : 0
+    },
+    "links" : [ {
+      "pointName" : "Point-D",
+      "allowedOperations" : [ "Move", "CHARGE", "Load", "Unload" ]
+    } ],
+    "locked" : false,
+    "layout" : {
+      "position" : {
+        "x" : 14000,
+        "y" : 500
+      },
+      "labelOffset" : {
+        "x" : -10,
+        "y" : -20
+      },
+      "locationRepresentation" : "DEFAULT",
+      "layerId" : 0
+    },
+    "properties" : [ ]
+  } ],
+  "blocks" : [ ],
+  "vehicles" : [ {
+    "name" : "Vehicle-0001",
+    "length" : 1000,
+    "boundingBox" : {
+      "length" : 1000,
+      "width" : 1000,
+      "height" : 1000,
+      "referenceOffset" : {
+        "x" : 0,
+        "y" : 0
+      }
+    },
+    "energyLevelCritical" : 30,
+    "energyLevelGood" : 90,
+    "energyLevelFullyRecharged" : 95,
+    "energyLevelSufficientlyRecharged" : 40,
+    "maxVelocity" : 1000,
+    "maxReverseVelocity" : 1000,
+    "layout" : {
+      "routeColor" : "#FF0000"
+    },
+    "properties" : [ {
+      "name" : "tcs:preferredAdapterClass",
+      "value" : "org.opentcs.ros2.adapter.Ros2CommunicationAdapterFactory"
+    }, {
+      "name" : "org.opentcs.ros2.initialPoint",
+      "value" : "Point-A"
+    }, {
+      "name" : "org.opentcs.ros2.bridgeHost",
+      "value" : "127.0.0.1"
+    }, {
+      "name" : "org.opentcs.ros2.bridgePort",
+      "value" : "9091"
+    }, {
+      "name" : "loopback:loadOperation",
+      "value" : "Load"
+    }, {
+      "name" : "loopback:unloadOperation",
+      "value" : "Unload"
+    } ]
+  }, {
+    "name" : "Vehicle-0002",
+    "length" : 1000,
+    "boundingBox" : {
+      "length" : 1000,
+      "width" : 1000,
+      "height" : 1000,
+      "referenceOffset" : {
+        "x" : 0,
+        "y" : 0
+      }
+    },
+    "energyLevelCritical" : 30,
+    "energyLevelGood" : 90,
+    "energyLevelFullyRecharged" : 95,
+    "energyLevelSufficientlyRecharged" : 40,
+    "maxVelocity" : 1000,
+    "maxReverseVelocity" : 1000,
+    "layout" : {
+      "routeColor" : "#0088FF"
+    },
+    "properties" : [ {
+      "name" : "tcs:preferredAdapterClass",
+      "value" : "org.opentcs.ros2.adapter.Ros2CommunicationAdapterFactory"
+    }, {
+      "name" : "org.opentcs.ros2.initialPoint",
+      "value" : "Point-C"
+    }, {
+      "name" : "org.opentcs.ros2.bridgeHost",
+      "value" : "127.0.0.1"
+    }, {
+      "name" : "org.opentcs.ros2.bridgePort",
+      "value" : "9092"
+    }, {
+      "name" : "loopback:loadOperation",
+      "value" : "Load"
+    }, {
+      "name" : "loopback:unloadOperation",
+      "value" : "Unload"
+    } ]
+  } ],
+  "visualLayout" : {
+    "name" : "VLayout",
+    "scaleX" : 50.0,
+    "scaleY" : 50.0,
+    "layers" : [ {
+      "id" : 0,
+      "ordinal" : 0,
+      "visible" : true,
+      "name" : "Default layer",
+      "groupId" : 0
+    } ],
+    "layerGroups" : [ {
+      "id" : 0,
+      "name" : "Default layer group",
+      "visible" : true
+    } ],
+    "properties" : [ ]
+  },
+  "properties" : [ {
+    "name" : "tcs:modelFileLastModified",
+    "value" : "2026-03-25T04:05:45Z"
+  } ]
+}

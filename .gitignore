@@ -1,0 +1,23 @@
+# ROS 2 编译缓存
+build/
+install/
+log/
+yahboomcar_ws/build/
+yahboomcar_ws/install/
+yahboomcar_ws/log/
+
+# Java / OpenTCS 编译缓存
+.gradle/
+out/
+target/
+*.class
+*.jar
+opentcs-master/**/build/
+
+# IDE 与系统隐藏文件
+.idea/
+.vscode/
+.DS_Store
+__pycache__/
+*.pyc
+yahboomcar_ws/src/yahboomcar_slam/params/ORBvoc.txt

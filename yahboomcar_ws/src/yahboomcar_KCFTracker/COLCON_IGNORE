@@ -1,0 +1,2 @@
+# 编译依赖 image_transport / OpenCV 等与当前环境不一致，跳过 colcon。
+# 若需此包：补全依赖后删除本文件再 colcon build。

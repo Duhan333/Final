@@ -1,0 +1,14 @@
+---
+description: Prefer official ROS packages + user-installed deps over custom replacements
+alwaysApply: true
+---
+
+# ROS / 依赖策略
+
+当报错为 **缺少 ROS 包**（例如 `package 'joint_state_publisher' not found`、`executable not found`、未满足的 `exec_depend`）时：
+
+1. **优先保持原有、官方推荐用法**（如 `joint_state_publisher`、`xacro`、Nav2 默认组件等），**不要为了绕开缺失包而先在仓库里写替代实现**（例如自写简易节点 duplicate 官方功能）。
+2. **在 `package.xml` 中声明正确的 `depend` / `exec_depend`**，并在 **`RUN_GUIDE.md` 或回复里说明**用户需执行的安装命令（如 `sudo apt install ros-humble-<pkg>` 或 `rosdep install`）。
+3. **由用户在本机安装依赖**；助手可提示命令，默认假设用户愿意安装官方包。
+
+仅在用户**明确要求**避免某依赖、或官方方案在目标环境**确实不可用**时，再考虑替代实现。

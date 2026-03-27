@@ -1,0 +1,123 @@
+{
+  "name": "ROS2-OpenTCS-MinPlant",
+  "points": [
+    {
+      "name": "Point-A",
+      "position": { "x": 0, "y": 0, "z": 0 },
+      "vehicleOrientationAngle": 0,
+      "type": "HALT_POSITION",
+      "vehicleEnvelopes": [],
+      "maxVehicleBoundingBox": {
+        "length": 1000,
+        "width": 1000,
+        "height": 1000,
+        "referenceOffset": { "x": 0, "y": 0 }
+      },
+      "layout": {
+        "position": { "x": 0, "y": 0 },
+        "labelOffset": { "x": 10, "y": 10 },
+        "layerId": 0
+      },
+      "properties": []
+    },
+    {
+      "name": "Point-B",
+      "position": { "x": 1000, "y": 0, "z": 0 },
+      "vehicleOrientationAngle": 0,
+      "type": "HALT_POSITION",
+      "vehicleEnvelopes": [],
+      "maxVehicleBoundingBox": {
+        "length": 1000,
+        "width": 1000,
+        "height": 1000,
+        "referenceOffset": { "x": 0, "y": 0 }
+      },
+      "layout": {
+        "position": { "x": 1000, "y": 0 },
+        "labelOffset": { "x": 10, "y": 10 },
+        "layerId": 0
+      },
+      "properties": []
+    }
+  ],
+  "paths": [
+    {
+      "name": "Path-AB",
+      "srcPointName": "Point-A",
+      "destPointName": "Point-B",
+      "length": 1000,
+      "maxVelocity": 2500,
+      "maxReverseVelocity": 2500,
+      "locked": false,
+      "peripheralOperations": [],
+      "vehicleEnvelopes": [],
+      "layout": { "connectionType": "DIRECT", "layerId": 0 },
+      "properties": []
+    }
+  ],
+  "locationTypes": [
+    {
+      "name": "Working-station",
+      "allowedOperations": [ "Move" ],
+      "allowedPeripheralOperations": [],
+      "layout": { "locationRepresentation": "WORKING_GENERIC" },
+      "properties": []
+    }
+  ],
+  "locations": [
+    {
+      "name": "Location-B",
+      "typeName": "Working-station",
+      "position": { "x": 1000, "y": 0, "z": 0 },
+      "links": [
+        { "pointName": "Point-B", "allowedOperations": [ "Move" ] }
+      ],
+      "locked": false,
+      "layout": { "position": { "x": 1000, "y": 0 }, "labelOffset": { "x": 10, "y": 10 }, "layerId": 0 },
+      "properties": []
+    }
+  ],
+  "blocks": [
+    {
+      "name": "Block-1",
+      "type": "SINGLE_VEHICLE_ONLY",
+      "memberNames": [ "Path-AB" ],
+      "properties": [],
+      "layout": {}
+    }
+  ],
+  "vehicles": [
+    {
+      "name": "Vehicle-1",
+      "length": 1000,
+      "boundingBox": {
+        "length": 1000,
+        "width": 1000,
+        "height": 1000,
+        "referenceOffset": { "x": 0, "y": 0 }
+      },
+      "energyLevelCritical": 15,
+      "energyLevelGood": 50,
+      "energyLevelFullyRecharged": 97,
+      "energyLevelSufficientlyRecharged": 75,
+      "maxVelocity": 1500,
+      "maxReverseVelocity": 750,
+      "layout": { "routeColor": "#00FF00" },
+      "properties": [
+        {
+          "name": "org.opentcs.ros2.initialPoint",
+          "value": "Point-A"
+        }
+      ]
+    }
+  ],
+  "visualLayout": {
+    "name": "VLayout",
+    "scaleX": 50.0,
+    "scaleY": 50.0,
+    "layers": [ { "id": 0, "ordinal": 0, "visible": true, "name": "Default layer", "groupId": 0 } ],
+    "layerGroups": [ { "id": 0, "name": "Default layer group", "visible": true } ],
+    "properties": []
+  },
+  "properties": []
+}
