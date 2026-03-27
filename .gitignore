@@ -21,3 +21,6 @@ opentcs-master/**/build/
 __pycache__/
 *.pyc
 yahboomcar_ws/src/yahboomcar_slam/params/ORBvoc.txt
+*.zip
+*.zip
+*.zip
