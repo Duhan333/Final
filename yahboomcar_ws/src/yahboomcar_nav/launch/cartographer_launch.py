@@ -11,6 +11,7 @@ from launch.substitutions import ThisLaunchFileDir
 
 def generate_launch_description():
     use_sim_time = LaunchConfiguration('use_sim_time', default='false')
+    scan_topic = LaunchConfiguration('scan_topic', default='/scan_relay')
     package_path = get_package_share_directory('yahboomcar_nav')
     configuration_directory = LaunchConfiguration('configuration_directory', default=os.path.join(
                                                   package_path, 'params'))
@@ -33,6 +34,10 @@ def generate_launch_description():
             'use_sim_time',
             default_value='false',
             description='Use simulation (Gazebo) clock if true'),
+        DeclareLaunchArgument(
+            'scan_topic',
+            default_value='/scan_relay',
+            description='LaserScan topic for Cartographer (use relay output to avoid duplicate publishers on /scan).'),
 
         Node(
             package='cartographer_ros',
@@ -40,6 +45,7 @@ def generate_launch_description():
             name='cartographer_node',
             output='screen',
             parameters=[{'use_sim_time': use_sim_time}],
+            remappings=[('scan', scan_topic)],
             arguments=['-configuration_directory', configuration_directory,
                        '-configuration_basename', configuration_basename]),
 

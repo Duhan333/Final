@@ -146,7 +146,8 @@
     <include>
       <uri>model://yahboomcar_X3</uri>
       <name>yahboomcar</name>
-      <pose>0 0 0.08 0 0 0</pose>
+      <!-- Raise initial spawn slightly to avoid wheel/ground interpenetration at startup. -->
+      <pose>0 0 0.11 0 0 0</pose>
     </include>
 
   </world>
