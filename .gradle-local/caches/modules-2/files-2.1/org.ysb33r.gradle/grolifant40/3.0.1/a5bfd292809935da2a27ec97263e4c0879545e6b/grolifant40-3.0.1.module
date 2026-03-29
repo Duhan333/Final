@@ -1,0 +1,107 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "org.ysb33r.gradle",
+    "module": "grolifant40",
+    "version": "3.0.1",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "6.6.1",
+      "buildId": "z5dhoy4qabbsji7xgkleg2dxd4"
+    }
+  },
+  "variants": [
+    {
+      "name": "apiElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 8,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-api"
+      },
+      "dependencies": [
+        {
+          "group": "org.ysb33r.gradle",
+          "module": "grolifant-core",
+          "version": {
+            "requires": "3.0.1"
+          }
+        },
+        {
+          "group": "org.ysb33r.gradle",
+          "module": "grolifant-rawhide",
+          "version": {
+            "requires": "3.0.1"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "grolifant40-3.0.1.jar",
+          "url": "grolifant40-3.0.1.jar",
+          "size": 175108,
+          "sha512": "7a4d7804e75fc495c3f36470a9be91d191a86391fe3bf48b55a64e9e2f050a6c322d4b9b1213afcae310fb581e56e5f7118cc0b2625a271fcf54e37a98bd6467",
+          "sha256": "f62885fc1d51a8575e5b33ab486e81cafc2f3b4e2081e5eb1ab22bebe4a44bdd",
+          "sha1": "c370a49f41cc24b823fe584eaf3064777d3f2ff8",
+          "md5": "54352ca3217bdce9957fff945a3eeeeb"
+        }
+      ]
+    },
+    {
+      "name": "runtimeElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 8,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-runtime"
+      },
+      "dependencies": [
+        {
+          "group": "org.tukaani",
+          "module": "xz",
+          "version": {
+            "requires": "1.6"
+          }
+        },
+        {
+          "group": "org.apache.commons",
+          "module": "commons-collections4",
+          "version": {
+            "requires": "4.4"
+          }
+        },
+        {
+          "group": "org.ysb33r.gradle",
+          "module": "grolifant-core",
+          "version": {
+            "requires": "3.0.1"
+          }
+        },
+        {
+          "group": "org.ysb33r.gradle",
+          "module": "grolifant-rawhide",
+          "version": {
+            "requires": "3.0.1"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "grolifant40-3.0.1.jar",
+          "url": "grolifant40-3.0.1.jar",
+          "size": 175108,
+          "sha512": "7a4d7804e75fc495c3f36470a9be91d191a86391fe3bf48b55a64e9e2f050a6c322d4b9b1213afcae310fb581e56e5f7118cc0b2625a271fcf54e37a98bd6467",
+          "sha256": "f62885fc1d51a8575e5b33ab486e81cafc2f3b4e2081e5eb1ab22bebe4a44bdd",
+          "sha1": "c370a49f41cc24b823fe584eaf3064777d3f2ff8",
+          "md5": "54352ca3217bdce9957fff945a3eeeeb"
+        }
+      ]
+    }
+  ]
+}

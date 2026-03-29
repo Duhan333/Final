@@ -100,6 +100,14 @@ class AllocatorTask
 
   private void processAllocate(AllocatorCommand.Allocate command) {
     if (!tryAllocate(command)) {
+      LOG.info(
+          "{}: Deferring allocation (resources not yet grantable): {}",
+          command.getClient().getId(),
+          command.getResources().stream()
+              .map(TCSResource::getName)
+              .sorted()
+              .toList()
+      );
       LOG.debug("{}: Resources unavailable, deferring allocation...", command.getClient().getId());
       deferredAllocations.add(command);
       return;

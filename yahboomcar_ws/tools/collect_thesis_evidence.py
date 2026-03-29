@@ -10,6 +10,7 @@
 前置条件：
 - ros2 launch opentcs_ros2_bridge evaluation_launch.py 正在运行
 - OpenTCS Kernel 正在运行（默认 http://localhost:55200）
+- 默认 plant 为 opentcs_plant_model_hub_m.json（与 evaluation_launch 初始位姿一致）
 """
 from __future__ import annotations
 
@@ -103,7 +104,7 @@ def resolve_location_target_from_model(
     model_json: pathlib.Path, location_name: str, plant_unit_mm: bool
 ) -> tuple[float, float, float, str] | None:
     """
-    从 opentcs_plant_model.json 解析 location 对应目标坐标（米）。
+    从 plant model JSON（默认 opentcs_plant_model_hub_m.json）解析 location 对应目标坐标（米）。
     优先 location.links -> point.position；否则用 location.position。
     返回: (x_m, y_m, yaw_rad, source_desc)
     """
@@ -175,8 +176,8 @@ def pick_event_time(order: dict, event_code: str) -> str | None:
 def main():
     p = argparse.ArgumentParser(description="一键采证（OpenTCS <-> ROS2 逻辑仿真）")
     p.add_argument("--kernel", default="http://localhost:55200", help="OpenTCS Web API base URL")
-    p.add_argument("--vehicle", default="Vehicle-1", help="车辆名")
-    p.add_argument("--location", default="Location-B", help="目标 Location 名")
+    p.add_argument("--vehicle", default="Vehicle-0001", help="车辆名")
+    p.add_argument("--location", default="Location-E-Load", help="目标 Location 名")
     p.add_argument("--order-name", default="", help="订单名，留空自动生成")
     p.add_argument("--x", type=float, required=True, help="OpenTCS 目标 x（用于误差统计）")
     p.add_argument("--y", type=float, required=True, help="OpenTCS 目标 y（用于误差统计）")
@@ -188,7 +189,7 @@ def main():
     )
     p.add_argument(
         "--plant-model-json",
-        default="/home/klq/Final/opentcs_plant_model.json",
+        default="/home/klq/Final/opentcs_plant_model_hub_m.json",
         help="OpenTCS plant model JSON（用于解析 location 对应的真实目标坐标）",
     )
     p.add_argument(

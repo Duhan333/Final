@@ -1,0 +1,100 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "io.freefair.gradle",
+    "module": "lombok-plugin",
+    "version": "9.1.0",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "9.1.0"
+    }
+  },
+  "variants": [
+    {
+      "name": "apiElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 17,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-api"
+      },
+      "files": [
+        {
+          "name": "lombok-plugin-9.1.0.jar",
+          "url": "lombok-plugin-9.1.0.jar",
+          "size": 37285,
+          "sha512": "d2d509c4dbda5c2c011a1579e06d5ec664007b517b83fc43117c4b35af0ab5c915e874888cd78e90751231f6c36c2683ba1bde2087556f2ab8ee05ed9d896570",
+          "sha256": "9be337219d424eed93cea63351a4c078138519a67d8433fafe4831de7b6d33f5",
+          "sha1": "9c7c3269d7428b533e308021cd13fd30d406e32a",
+          "md5": "7cac43a806363c23f4d7cd4337b48b91"
+        }
+      ]
+    },
+    {
+      "name": "runtimeElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 17,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-runtime"
+      },
+      "files": [
+        {
+          "name": "lombok-plugin-9.1.0.jar",
+          "url": "lombok-plugin-9.1.0.jar",
+          "size": 37285,
+          "sha512": "d2d509c4dbda5c2c011a1579e06d5ec664007b517b83fc43117c4b35af0ab5c915e874888cd78e90751231f6c36c2683ba1bde2087556f2ab8ee05ed9d896570",
+          "sha256": "9be337219d424eed93cea63351a4c078138519a67d8433fafe4831de7b6d33f5",
+          "sha1": "9c7c3269d7428b533e308021cd13fd30d406e32a",
+          "md5": "7cac43a806363c23f4d7cd4337b48b91"
+        }
+      ]
+    },
+    {
+      "name": "sourcesElements",
+      "attributes": {
+        "org.gradle.category": "documentation",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.docstype": "sources",
+        "org.gradle.usage": "java-runtime"
+      },
+      "files": [
+        {
+          "name": "lombok-plugin-9.1.0-sources.jar",
+          "url": "lombok-plugin-9.1.0-sources.jar",
+          "size": 16676,
+          "sha512": "10c537f966769b10b95b62ec3414e94d4c8472045c931eb6681abc320f51299cec6cf123dcc399a4f9a6793d209d25f5473bfe595fffc71669b3b5f19ccdcaa0",
+          "sha256": "7d44d22e667011640671bd44725e3aa679698f2812c11e2feb0d1206f1a31ba4",
+          "sha1": "bf85fa6bc8d13c955b0318942afc3d32be9ac119",
+          "md5": "b53ec06994ea5502f2314ad4f24f355c"
+        }
+      ]
+    },
+    {
+      "name": "javadocElements",
+      "attributes": {
+        "org.gradle.category": "documentation",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.docstype": "javadoc",
+        "org.gradle.usage": "java-runtime"
+      },
+      "files": [
+        {
+          "name": "lombok-plugin-9.1.0-javadoc.jar",
+          "url": "lombok-plugin-9.1.0-javadoc.jar",
+          "size": 159854,
+          "sha512": "419f2c68f59cd7ff094caa9dc25c8464b0e1c9d75fa09e89aeb994c7a4ddbccaca6c14098a7fe0f957206523b142e3ff3681387e47f659c57033d9d04f935123",
+          "sha256": "f2411be15566ff990c0c60cf18fc10751368e8dbe51039cc241e5ffce76a621f",
+          "sha1": "0918c2d4e06795829723e43020590ac88a0443e9",
+          "md5": "a26846feb22c824a7ce4405f192f817f"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,177 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "com.fasterxml.jackson.module",
+    "module": "jackson-module-jsonSchema",
+    "version": "2.20.0",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "variants": [
+    {
+      "name": "apiElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-api"
+      },
+      "dependencies": [
+        {
+          "group": "javax.validation",
+          "module": "validation-api",
+          "version": {
+            "requires": "1.1.0.Final"
+          }
+        },
+        {
+          "group": "com.fasterxml.jackson.core",
+          "module": "jackson-annotations",
+          "version": {
+            "requires": "2.20"
+          }
+        },
+        {
+          "group": "com.fasterxml.jackson.core",
+          "module": "jackson-core",
+          "version": {
+            "requires": "2.20.0"
+          }
+        },
+        {
+          "group": "com.fasterxml.jackson.core",
+          "module": "jackson-databind",
+          "version": {
+            "requires": "2.20.0"
+          }
+        },
+        {
+          "group": "com.fasterxml.jackson",
+          "module": "jackson-bom",
+          "version": {
+            "requires": "2.20.0"
+          },
+          "attributes": {
+            "org.gradle.category": "platform"
+          },
+          "endorseStrictVersions": true
+        }
+      ],
+      "files": [
+        {
+          "name": "jackson-module-jsonSchema-2.20.0.jar",
+          "url": "jackson-module-jsonSchema-2.20.0.jar",
+          "size": 79508,
+          "sha512": "610685acea3860a6666eb46ae36929699a66bc08847f7a5880ee5a84667c5703cb985ef0af839ec534adf7fec743c68b21641966088ed93e09fac7ef5c332a1a",
+          "sha256": "bd75341daca86a02e27efa9ef6005e94c259c21f1d7b8fded2c393f83253a408",
+          "sha1": "59af74ca8545c6902f475407928de46fb099ca3a",
+          "md5": "ee65a6fa721bd183188eb08912bd0421"
+        }
+      ]
+    },
+    {
+      "name": "runtimeElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-runtime"
+      },
+      "dependencies": [
+        {
+          "group": "javax.validation",
+          "module": "validation-api",
+          "version": {
+            "requires": "1.1.0.Final"
+          }
+        },
+        {
+          "group": "com.fasterxml.jackson.core",
+          "module": "jackson-annotations",
+          "version": {
+            "requires": "2.20"
+          }
+        },
+        {
+          "group": "com.fasterxml.jackson.core",
+          "module": "jackson-core",
+          "version": {
+            "requires": "2.20.0"
+          }
+        },
+        {
+          "group": "com.fasterxml.jackson.core",
+          "module": "jackson-databind",
+          "version": {
+            "requires": "2.20.0"
+          }
+        },
+        {
+          "group": "com.fasterxml.jackson",
+          "module": "jackson-bom",
+          "version": {
+            "requires": "2.20.0"
+          },
+          "attributes": {
+            "org.gradle.category": "platform"
+          },
+          "endorseStrictVersions": true
+        }
+      ],
+      "files": [
+        {
+          "name": "jackson-module-jsonSchema-2.20.0.jar",
+          "url": "jackson-module-jsonSchema-2.20.0.jar",
+          "size": 79508,
+          "sha512": "610685acea3860a6666eb46ae36929699a66bc08847f7a5880ee5a84667c5703cb985ef0af839ec534adf7fec743c68b21641966088ed93e09fac7ef5c332a1a",
+          "sha256": "bd75341daca86a02e27efa9ef6005e94c259c21f1d7b8fded2c393f83253a408",
+          "sha1": "59af74ca8545c6902f475407928de46fb099ca3a",
+          "md5": "ee65a6fa721bd183188eb08912bd0421"
+        }
+      ]
+    },
+    {
+      "name": "javadocElements",
+      "attributes": {
+        "org.gradle.category": "documentation",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.docstype": "javadoc",
+        "org.gradle.usage": "java-runtime"
+      },
+      "dependencies": [],
+      "files": [
+        {
+          "name": "jackson-module-jsonSchema-2.20.0-javadoc.jar",
+          "url": "jackson-module-jsonSchema-2.20.0-javadoc.jar",
+          "size": 399722,
+          "sha512": "efffaf70b06dd64c9337ba3dcd08f4feab106b7dcc1a867663e291e2797c63f6d3f28725390eac76c0c2f4787c295d524593cc311588d2b2405c9a2d4e35d875",
+          "sha256": "b7c1638dafacfef9a2142e40cda6927d053624d52cd84875d4945594cde1eabb",
+          "sha1": "d78e05b73c16fcaf81df83825d0aea50eac544f1",
+          "md5": "a7c045b8d77e2cb5162b087e92fcad72"
+        }
+      ]
+    },
+    {
+      "name": "sourcesElements",
+      "attributes": {
+        "org.gradle.category": "documentation",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.docstype": "sources",
+        "org.gradle.usage": "java-runtime"
+      },
+      "dependencies": [],
+      "files": [
+        {
+          "name": "jackson-module-jsonSchema-2.20.0-sources.jar",
+          "url": "jackson-module-jsonSchema-2.20.0-sources.jar",
+          "size": 56931,
+          "sha512": "bf3c1995cffcff927587c2f348a9c8ceb560528bb9810688b0bf5a78a35d6ee0e9820dcb70575e3c5f9b3651cc47dff88c65f9628b975c9ac606976d9c1651c8",
+          "sha256": "d6d6b59ad56f579c687b4c743d9d5efc08672108581c8f77eb4dac80664767ac",
+          "sha1": "7d2e2975a6adcae2d6be086bca252e6bf30c34e9",
+          "md5": "5e0b69987d19602bfb9b4326fa25f0af"
+        }
+      ]
+    }
+  ]
+}

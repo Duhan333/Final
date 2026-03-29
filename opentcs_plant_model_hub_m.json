@@ -1,0 +1,685 @@
+{
+  "name" : "hub-m-dual-lane",
+  "points" : [ {
+    "name" : "E-P0",
+    "position" : {
+      "x" : 0,
+      "y" : 7500,
+      "z" : 0
+    },
+    "vehicleOrientationAngle" : 0.0,
+    "type" : "HALT_POSITION",
+    "layout" : {
+      "position" : {
+        "x" : 0,
+        "y" : 7500
+      },
+      "labelOffset" : {
+        "x" : -200,
+        "y" : 80
+      },
+      "layerId" : 0
+    },
+    "vehicleEnvelopes" : [ ],
+    "maxVehicleBoundingBox" : {
+      "length" : 1000,
+      "width" : 1000,
+      "height" : 1000,
+      "referenceOffset" : {
+        "x" : 0,
+        "y" : 0
+      }
+    },
+    "properties" : [ ]
+  }, {
+    "name" : "E-P1",
+    "position" : {
+      "x" : 4000,
+      "y" : 7500,
+      "z" : 0
+    },
+    "vehicleOrientationAngle" : 0.0,
+    "type" : "HALT_POSITION",
+    "layout" : {
+      "position" : {
+        "x" : 4000,
+        "y" : 7500
+      },
+      "labelOffset" : {
+        "x" : -30,
+        "y" : 80
+      },
+      "layerId" : 0
+    },
+    "vehicleEnvelopes" : [ ],
+    "maxVehicleBoundingBox" : {
+      "length" : 1000,
+      "width" : 1000,
+      "height" : 1000,
+      "referenceOffset" : {
+        "x" : 0,
+        "y" : 0
+      }
+    },
+    "properties" : [ ]
+  }, {
+    "name" : "E-P2",
+    "position" : {
+      "x" : 8000,
+      "y" : 7500,
+      "z" : 0
+    },
+    "vehicleOrientationAngle" : 0.0,
+    "type" : "HALT_POSITION",
+    "layout" : {
+      "position" : {
+        "x" : 8000,
+        "y" : 7500
+      },
+      "labelOffset" : {
+        "x" : -30,
+        "y" : 80
+      },
+      "layerId" : 0
+    },
+    "vehicleEnvelopes" : [ ],
+    "maxVehicleBoundingBox" : {
+      "length" : 1000,
+      "width" : 1000,
+      "height" : 1000,
+      "referenceOffset" : {
+        "x" : 0,
+        "y" : 0
+      }
+    },
+    "properties" : [ ]
+  }, {
+    "name" : "M",
+    "position" : {
+      "x" : 8000,
+      "y" : 4000,
+      "z" : 0
+    },
+    "vehicleOrientationAngle" : 0.0,
+    "type" : "HALT_POSITION",
+    "layout" : {
+      "position" : {
+        "x" : 8000,
+        "y" : 4000
+      },
+      "labelOffset" : {
+        "x" : 40,
+        "y" : -120
+      },
+      "layerId" : 0
+    },
+    "vehicleEnvelopes" : [ ],
+    "maxVehicleBoundingBox" : {
+      "length" : 1000,
+      "width" : 1000,
+      "height" : 1000,
+      "referenceOffset" : {
+        "x" : 0,
+        "y" : 0
+      }
+    },
+    "properties" : [ ]
+  }, {
+    "name" : "E-P3",
+    "position" : {
+      "x" : 12000,
+      "y" : 7500,
+      "z" : 0
+    },
+    "vehicleOrientationAngle" : 0.0,
+    "type" : "HALT_POSITION",
+    "layout" : {
+      "position" : {
+        "x" : 12000,
+        "y" : 7500
+      },
+      "labelOffset" : {
+        "x" : 120,
+        "y" : 80
+      },
+      "layerId" : 0
+    },
+    "vehicleEnvelopes" : [ ],
+    "maxVehicleBoundingBox" : {
+      "length" : 1000,
+      "width" : 1000,
+      "height" : 1000,
+      "referenceOffset" : {
+        "x" : 0,
+        "y" : 0
+      }
+    },
+    "properties" : [ ]
+  }, {
+    "name" : "W-P0",
+    "position" : {
+      "x" : 1000,
+      "y" : 2500,
+      "z" : 0
+    },
+    "vehicleOrientationAngle" : 0.0,
+    "type" : "HALT_POSITION",
+    "layout" : {
+      "position" : {
+        "x" : 1000,
+        "y" : 2500
+      },
+      "labelOffset" : {
+        "x" : -200,
+        "y" : -100
+      },
+      "layerId" : 0
+    },
+    "vehicleEnvelopes" : [ ],
+    "maxVehicleBoundingBox" : {
+      "length" : 1000,
+      "width" : 1000,
+      "height" : 1000,
+      "referenceOffset" : {
+        "x" : 0,
+        "y" : 0
+      }
+    },
+    "properties" : [ ]
+  }, {
+    "name" : "W-P1",
+    "position" : {
+      "x" : 2800,
+      "y" : 2500,
+      "z" : 0
+    },
+    "vehicleOrientationAngle" : 0.0,
+    "type" : "HALT_POSITION",
+    "layout" : {
+      "position" : {
+        "x" : 2800,
+        "y" : 2500
+      },
+      "labelOffset" : {
+        "x" : -40,
+        "y" : -100
+      },
+      "layerId" : 0
+    },
+    "vehicleEnvelopes" : [ ],
+    "maxVehicleBoundingBox" : {
+      "length" : 1000,
+      "width" : 1000,
+      "height" : 1000,
+      "referenceOffset" : {
+        "x" : 0,
+        "y" : 0
+      }
+    },
+    "properties" : [ ]
+  }, {
+    "name" : "W-P2",
+    "position" : {
+      "x" : 6500,
+      "y" : 2500,
+      "z" : 0
+    },
+    "vehicleOrientationAngle" : 0.0,
+    "type" : "HALT_POSITION",
+    "layout" : {
+      "position" : {
+        "x" : 6500,
+        "y" : 2500
+      },
+      "labelOffset" : {
+        "x" : -40,
+        "y" : -100
+      },
+      "layerId" : 0
+    },
+    "vehicleEnvelopes" : [ ],
+    "maxVehicleBoundingBox" : {
+      "length" : 1000,
+      "width" : 1000,
+      "height" : 1000,
+      "referenceOffset" : {
+        "x" : 0,
+        "y" : 0
+      }
+    },
+    "properties" : [ ]
+  }, {
+    "name" : "W-P3",
+    "position" : {
+      "x" : 12000,
+      "y" : 2500,
+      "z" : 0
+    },
+    "vehicleOrientationAngle" : 0.0,
+    "type" : "HALT_POSITION",
+    "layout" : {
+      "position" : {
+        "x" : 12000,
+        "y" : 2500
+      },
+      "labelOffset" : {
+        "x" : 140,
+        "y" : -100
+      },
+      "layerId" : 0
+    },
+    "vehicleEnvelopes" : [ ],
+    "maxVehicleBoundingBox" : {
+      "length" : 1000,
+      "width" : 1000,
+      "height" : 1000,
+      "referenceOffset" : {
+        "x" : 0,
+        "y" : 0
+      }
+    },
+    "properties" : [ ]
+  } ],
+  "paths" : [ {
+    "name" : "E-P0 --- E-P1",
+    "srcPointName" : "E-P0",
+    "destPointName" : "E-P1",
+    "length" : 4000,
+    "maxVelocity" : 1000,
+    "maxReverseVelocity" : 1000,
+    "peripheralOperations" : [ ],
+    "locked" : false,
+    "layout" : {
+      "connectionType" : "DIRECT",
+      "controlPoints" : [ ],
+      "layerId" : 0
+    },
+    "vehicleEnvelopes" : [ ],
+    "properties" : [ ]
+  }, {
+    "name" : "E-P1 --- E-P2",
+    "srcPointName" : "E-P1",
+    "destPointName" : "E-P2",
+    "length" : 4000,
+    "maxVelocity" : 1000,
+    "maxReverseVelocity" : 1000,
+    "peripheralOperations" : [ ],
+    "locked" : false,
+    "layout" : {
+      "connectionType" : "DIRECT",
+      "controlPoints" : [ ],
+      "layerId" : 0
+    },
+    "vehicleEnvelopes" : [ ],
+    "properties" : [ ]
+  }, {
+    "name" : "E-P2 --- M",
+    "srcPointName" : "E-P2",
+    "destPointName" : "M",
+    "length" : 3500,
+    "maxVelocity" : 1000,
+    "maxReverseVelocity" : 1000,
+    "peripheralOperations" : [ ],
+    "locked" : false,
+    "layout" : {
+      "connectionType" : "DIRECT",
+      "controlPoints" : [ ],
+      "layerId" : 0
+    },
+    "vehicleEnvelopes" : [ ],
+    "properties" : [ ]
+  }, {
+    "name" : "M --- E-P3",
+    "srcPointName" : "M",
+    "destPointName" : "E-P3",
+    "length" : 5300,
+    "maxVelocity" : 1000,
+    "maxReverseVelocity" : 1000,
+    "peripheralOperations" : [ ],
+    "locked" : false,
+    "layout" : {
+      "connectionType" : "DIRECT",
+      "controlPoints" : [ ],
+      "layerId" : 0
+    },
+    "vehicleEnvelopes" : [ ],
+    "properties" : [ ]
+  }, {
+    "name" : "W-P0 --- W-P1",
+    "srcPointName" : "W-P0",
+    "destPointName" : "W-P1",
+    "length" : 1800,
+    "maxVelocity" : 1000,
+    "maxReverseVelocity" : 1000,
+    "peripheralOperations" : [ ],
+    "locked" : false,
+    "layout" : {
+      "connectionType" : "DIRECT",
+      "controlPoints" : [ ],
+      "layerId" : 0
+    },
+    "vehicleEnvelopes" : [ ],
+    "properties" : [ ]
+  }, {
+    "name" : "W-P1 --- W-P2",
+    "srcPointName" : "W-P1",
+    "destPointName" : "W-P2",
+    "length" : 3700,
+    "maxVelocity" : 1000,
+    "maxReverseVelocity" : 1000,
+    "peripheralOperations" : [ ],
+    "locked" : false,
+    "layout" : {
+      "connectionType" : "DIRECT",
+      "controlPoints" : [ ],
+      "layerId" : 0
+    },
+    "vehicleEnvelopes" : [ ],
+    "properties" : [ ]
+  }, {
+    "name" : "W-P2 --- M",
+    "srcPointName" : "W-P2",
+    "destPointName" : "M",
+    "length" : 2200,
+    "maxVelocity" : 1000,
+    "maxReverseVelocity" : 1000,
+    "peripheralOperations" : [ ],
+    "locked" : false,
+    "layout" : {
+      "connectionType" : "DIRECT",
+      "controlPoints" : [ ],
+      "layerId" : 0
+    },
+    "vehicleEnvelopes" : [ ],
+    "properties" : [ ]
+  }, {
+    "name" : "M --- W-P3",
+    "srcPointName" : "M",
+    "destPointName" : "W-P3",
+    "length" : 4300,
+    "maxVelocity" : 1000,
+    "maxReverseVelocity" : 1000,
+    "peripheralOperations" : [ ],
+    "locked" : false,
+    "layout" : {
+      "connectionType" : "DIRECT",
+      "controlPoints" : [ ],
+      "layerId" : 0
+    },
+    "vehicleEnvelopes" : [ ],
+    "properties" : [ ]
+  } ],
+  "locationTypes" : [ {
+    "name" : "LType-HubM",
+    "allowedOperations" : [ "CHARGE", "Load", "Unload", "Move" ],
+    "allowedPeripheralOperations" : [ ],
+    "layout" : {
+      "locationRepresentation" : "DEFAULT"
+    },
+    "properties" : [ ]
+  } ],
+  "locations" : [ {
+    "name" : "Location-E-Charge",
+    "typeName" : "LType-HubM",
+    "position" : {
+      "x" : 0,
+      "y" : 9300,
+      "z" : 0
+    },
+    "links" : [ {
+      "pointName" : "E-P0",
+      "allowedOperations" : [ "Move", "CHARGE", "Load", "Unload" ]
+    } ],
+    "locked" : false,
+    "layout" : {
+      "position" : {
+        "x" : 0,
+        "y" : 9300
+      },
+      "labelOffset" : {
+        "x" : -80,
+        "y" : 40
+      },
+      "locationRepresentation" : "DEFAULT",
+      "layerId" : 0
+    },
+    "properties" : [ ]
+  }, {
+    "name" : "Location-E-Load",
+    "typeName" : "LType-HubM",
+    "position" : {
+      "x" : 4000,
+      "y" : 9300,
+      "z" : 0
+    },
+    "links" : [ {
+      "pointName" : "E-P1",
+      "allowedOperations" : [ "Move", "CHARGE", "Load", "Unload" ]
+    } ],
+    "locked" : false,
+    "layout" : {
+      "position" : {
+        "x" : 4000,
+        "y" : 9300
+      },
+      "labelOffset" : {
+        "x" : -60,
+        "y" : 40
+      },
+      "locationRepresentation" : "DEFAULT",
+      "layerId" : 0
+    },
+    "properties" : [ ]
+  }, {
+    "name" : "Location-E-Unload",
+    "typeName" : "LType-HubM",
+    "position" : {
+      "x" : 12000,
+      "y" : 9300,
+      "z" : 0
+    },
+    "links" : [ {
+      "pointName" : "E-P3",
+      "allowedOperations" : [ "Move", "CHARGE", "Load", "Unload" ]
+    } ],
+    "locked" : false,
+    "layout" : {
+      "position" : {
+        "x" : 12000,
+        "y" : 9300
+      },
+      "labelOffset" : {
+        "x" : -100,
+        "y" : 40
+      },
+      "locationRepresentation" : "DEFAULT",
+      "layerId" : 0
+    },
+    "properties" : [ ]
+  }, {
+    "name" : "Location-W-Charge",
+    "typeName" : "LType-HubM",
+    "position" : {
+      "x" : 1000,
+      "y" : 400,
+      "z" : 0
+    },
+    "links" : [ {
+      "pointName" : "W-P0",
+      "allowedOperations" : [ "Move", "CHARGE", "Load", "Unload" ]
+    } ],
+    "locked" : false,
+    "layout" : {
+      "position" : {
+        "x" : 1000,
+        "y" : 400
+      },
+      "labelOffset" : {
+        "x" : -90,
+        "y" : -50
+      },
+      "locationRepresentation" : "DEFAULT",
+      "layerId" : 0
+    },
+    "properties" : [ ]
+  }, {
+    "name" : "Location-W-Load",
+    "typeName" : "LType-HubM",
+    "position" : {
+      "x" : 2800,
+      "y" : 400,
+      "z" : 0
+    },
+    "links" : [ {
+      "pointName" : "W-P1",
+      "allowedOperations" : [ "Move", "CHARGE", "Load", "Unload" ]
+    } ],
+    "locked" : false,
+    "layout" : {
+      "position" : {
+        "x" : 2800,
+        "y" : 400
+      },
+      "labelOffset" : {
+        "x" : -70,
+        "y" : -50
+      },
+      "locationRepresentation" : "DEFAULT",
+      "layerId" : 0
+    },
+    "properties" : [ ]
+  }, {
+    "name" : "Location-W-Unload",
+    "typeName" : "LType-HubM",
+    "position" : {
+      "x" : 12000,
+      "y" : 400,
+      "z" : 0
+    },
+    "links" : [ {
+      "pointName" : "W-P3",
+      "allowedOperations" : [ "Move", "CHARGE", "Load", "Unload" ]
+    } ],
+    "locked" : false,
+    "layout" : {
+      "position" : {
+        "x" : 12000,
+        "y" : 400
+      },
+      "labelOffset" : {
+        "x" : -110,
+        "y" : -50
+      },
+      "locationRepresentation" : "DEFAULT",
+      "layerId" : 0
+    },
+    "properties" : [ ]
+  } ],
+  "blocks" : [ ],
+  "vehicles" : [ {
+    "name" : "Vehicle-0001",
+    "length" : 1000,
+    "boundingBox" : {
+      "length" : 1000,
+      "width" : 1000,
+      "height" : 1000,
+      "referenceOffset" : {
+        "x" : 0,
+        "y" : 0
+      }
+    },
+    "energyLevelCritical" : 30,
+    "energyLevelGood" : 90,
+    "energyLevelFullyRecharged" : 95,
+    "energyLevelSufficientlyRecharged" : 40,
+    "maxVelocity" : 1000,
+    "maxReverseVelocity" : 1000,
+    "layout" : {
+      "routeColor" : "#FF0000"
+    },
+    "properties" : [ {
+      "name" : "tcs:preferredAdapterClass",
+      "value" : "org.opentcs.ros2.adapter.Ros2CommunicationAdapterFactory"
+    }, {
+      "name" : "org.opentcs.ros2.initialPoint",
+      "value" : "E-P0"
+    }, {
+      "name" : "org.opentcs.ros2.bridgeHost",
+      "value" : "127.0.0.1"
+    }, {
+      "name" : "org.opentcs.ros2.bridgePort",
+      "value" : "9091"
+    }, {
+      "name" : "loopback:loadOperation",
+      "value" : "Load"
+    }, {
+      "name" : "loopback:unloadOperation",
+      "value" : "Unload"
+    } ]
+  }, {
+    "name" : "Vehicle-0002",
+    "length" : 1000,
+    "boundingBox" : {
+      "length" : 1000,
+      "width" : 1000,
+      "height" : 1000,
+      "referenceOffset" : {
+        "x" : 0,
+        "y" : 0
+      }
+    },
+    "energyLevelCritical" : 30,
+    "energyLevelGood" : 90,
+    "energyLevelFullyRecharged" : 95,
+    "energyLevelSufficientlyRecharged" : 40,
+    "maxVelocity" : 1000,
+    "maxReverseVelocity" : 1000,
+    "layout" : {
+      "routeColor" : "#0088FF"
+    },
+    "properties" : [ {
+      "name" : "tcs:preferredAdapterClass",
+      "value" : "org.opentcs.ros2.adapter.Ros2CommunicationAdapterFactory"
+    }, {
+      "name" : "org.opentcs.ros2.initialPoint",
+      "value" : "W-P0"
+    }, {
+      "name" : "org.opentcs.ros2.bridgeHost",
+      "value" : "127.0.0.1"
+    }, {
+      "name" : "org.opentcs.ros2.bridgePort",
+      "value" : "9092"
+    }, {
+      "name" : "loopback:loadOperation",
+      "value" : "Load"
+    }, {
+      "name" : "loopback:unloadOperation",
+      "value" : "Unload"
+    } ]
+  } ],
+  "visualLayout" : {
+    "name" : "VLayout-HubM",
+    "scaleX" : 50.0,
+    "scaleY" : 50.0,
+    "layers" : [ {
+      "id" : 0,
+      "ordinal" : 0,
+      "visible" : true,
+      "name" : "Default layer",
+      "groupId" : 0
+    } ],
+    "layerGroups" : [ {
+      "id" : 0,
+      "name" : "Default layer group",
+      "visible" : true
+    } ],
+    "properties" : [ ]
+  },
+  "properties" : [ {
+    "name" : "tcs:modelFileLastModified",
+    "value" : "2026-03-29T00:00:00Z"
+  }, {
+    "name" : "tcs:note",
+    "value" : "Paths allow reverse (maxReverseVelocity>0) so router can validate E-P3->E-P0 return for CHARGE; Locations offset from Points for layout only (links unchanged)."
+  } ]
+}

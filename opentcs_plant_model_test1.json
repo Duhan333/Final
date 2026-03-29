@@ -190,6 +190,22 @@
     "vehicleEnvelopes" : [ ],
     "properties" : [ ]
   }, {
+    "name" : "Point-D --- Point-B",
+    "srcPointName" : "Point-D",
+    "destPointName" : "Point-B",
+    "length" : 7826,
+    "maxVelocity" : 1000,
+    "maxReverseVelocity" : 0,
+    "peripheralOperations" : [ ],
+    "locked" : false,
+    "layout" : {
+      "connectionType" : "DIRECT",
+      "controlPoints" : [ ],
+      "layerId" : 0
+    },
+    "vehicleEnvelopes" : [ ],
+    "properties" : [ ]
+  }, {
     "name" : "Point-D --- Point-A",
     "srcPointName" : "Point-D",
     "destPointName" : "Point-A",

@@ -1,0 +1,163 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "org.ysb33r.gradle",
+    "module": "grolifant-herd",
+    "version": "3.0.1",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "6.6.1",
+      "buildId": "z5dhoy4qabbsji7xgkleg2dxd4"
+    }
+  },
+  "variants": [
+    {
+      "name": "apiElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 8,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-api"
+      },
+      "dependencies": [
+        {
+          "group": "org.ysb33r.gradle",
+          "module": "grolifant40",
+          "version": {
+            "requires": "3.0.1"
+          }
+        },
+        {
+          "group": "org.ysb33r.gradle",
+          "module": "grolifant50",
+          "version": {
+            "requires": "3.0.1"
+          }
+        },
+        {
+          "group": "org.ysb33r.gradle",
+          "module": "grolifant60",
+          "version": {
+            "requires": "3.0.1"
+          }
+        },
+        {
+          "group": "org.ysb33r.gradle",
+          "module": "grolifant70",
+          "version": {
+            "requires": "3.0.1"
+          }
+        },
+        {
+          "group": "org.ysb33r.gradle",
+          "module": "grolifant80",
+          "version": {
+            "requires": "3.0.1"
+          }
+        },
+        {
+          "group": "org.ysb33r.gradle",
+          "module": "grolifant-core",
+          "version": {
+            "requires": "3.0.1"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "grolifant-herd-3.0.1.jar",
+          "url": "grolifant-herd-3.0.1.jar",
+          "size": 466,
+          "sha512": "e9c018ce99e730b6bb910236220b4d2cac246f2e2604c0a24fbe7d6569bd5f8b2e5544672e97c757fae00dee0428b367f5a45122a66d14ba9881137016a7f174",
+          "sha256": "72704bbbc99b94afca10b3c9faf60e26e1f3b8f4cb1390c25225718c239bf54e",
+          "sha1": "55006d9403215cbb7418bb995fe4b39ca37e7367",
+          "md5": "d6923b4a61501176da27de3ccdef41ba"
+        }
+      ]
+    },
+    {
+      "name": "runtimeElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 8,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-runtime"
+      },
+      "dependencies": [
+        {
+          "group": "org.tukaani",
+          "module": "xz",
+          "version": {
+            "requires": "1.6"
+          }
+        },
+        {
+          "group": "org.ysb33r.gradle",
+          "module": "grolifant40",
+          "version": {
+            "requires": "3.0.1"
+          }
+        },
+        {
+          "group": "org.ysb33r.gradle",
+          "module": "grolifant50",
+          "version": {
+            "requires": "3.0.1"
+          }
+        },
+        {
+          "group": "org.ysb33r.gradle",
+          "module": "grolifant60",
+          "version": {
+            "requires": "3.0.1"
+          }
+        },
+        {
+          "group": "org.ysb33r.gradle",
+          "module": "grolifant70",
+          "version": {
+            "requires": "3.0.1"
+          }
+        },
+        {
+          "group": "org.ysb33r.gradle",
+          "module": "grolifant80",
+          "version": {
+            "requires": "3.0.1"
+          }
+        },
+        {
+          "group": "org.ysb33r.gradle",
+          "module": "grolifant-core",
+          "version": {
+            "requires": "3.0.1"
+          }
+        },
+        {
+          "group": "org.ysb33r.gradle",
+          "module": "grolifant-rawhide",
+          "version": {
+            "requires": "3.0.1"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "grolifant-herd-3.0.1.jar",
+          "url": "grolifant-herd-3.0.1.jar",
+          "size": 466,
+          "sha512": "e9c018ce99e730b6bb910236220b4d2cac246f2e2604c0a24fbe7d6569bd5f8b2e5544672e97c757fae00dee0428b367f5a45122a66d14ba9881137016a7f174",
+          "sha256": "72704bbbc99b94afca10b3c9faf60e26e1f3b8f4cb1390c25225718c239bf54e",
+          "sha1": "55006d9403215cbb7418bb995fe4b39ca37e7367",
+          "md5": "d6923b4a61501176da27de3ccdef41ba"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,100 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "org.asciidoctor",
+    "module": "asciidoctorj-api",
+    "version": "2.5.7",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "7.4.2"
+    }
+  },
+  "variants": [
+    {
+      "name": "apiElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 8,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-api"
+      },
+      "files": [
+        {
+          "name": "asciidoctorj-api-2.5.7.jar",
+          "url": "asciidoctorj-api-2.5.7.jar",
+          "size": 61776,
+          "sha512": "3548c0285bffe394e72c8bcfedee10f862ef6bf579a60132f116686af9de8a5113f24957995cabf2dee0f993296e74f5fdc56263b01314c2e45535fcbd663868",
+          "sha256": "3fe1e4a778bf2ad73c756d4be5f6b983e4002c407e2e29a04fda7f36e6faa5d5",
+          "sha1": "37ea651d5f1ba2ad3d1c09eb2356b17f35c15bb5",
+          "md5": "c81feb8db629e8f92f08d3f97f3e3c44"
+        }
+      ]
+    },
+    {
+      "name": "runtimeElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 8,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-runtime"
+      },
+      "files": [
+        {
+          "name": "asciidoctorj-api-2.5.7.jar",
+          "url": "asciidoctorj-api-2.5.7.jar",
+          "size": 61776,
+          "sha512": "3548c0285bffe394e72c8bcfedee10f862ef6bf579a60132f116686af9de8a5113f24957995cabf2dee0f993296e74f5fdc56263b01314c2e45535fcbd663868",
+          "sha256": "3fe1e4a778bf2ad73c756d4be5f6b983e4002c407e2e29a04fda7f36e6faa5d5",
+          "sha1": "37ea651d5f1ba2ad3d1c09eb2356b17f35c15bb5",
+          "md5": "c81feb8db629e8f92f08d3f97f3e3c44"
+        }
+      ]
+    },
+    {
+      "name": "javadocElements",
+      "attributes": {
+        "org.gradle.category": "documentation",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.docstype": "javadoc",
+        "org.gradle.usage": "java-runtime"
+      },
+      "files": [
+        {
+          "name": "asciidoctorj-api-2.5.7-javadoc.jar",
+          "url": "asciidoctorj-api-2.5.7-javadoc.jar",
+          "size": 718744,
+          "sha512": "7f8336a4af4e0ed23a64212ee8fb579f6cc39ebba79a3c820686e2f263c40b7dff12ec68f24e16ce07af5eb0314cbfb743952dac19bf6e8380dbce0fc7eb6c76",
+          "sha256": "c9d287b088329d538d658d4107dfe82c097d7ba8d5fcb47a39ef269594df34f7",
+          "sha1": "7b7c59a872aa0ab561b240ad686fb5e5779a35c3",
+          "md5": "41834ea51fa67fa2d3bc7aea3f646fa6"
+        }
+      ]
+    },
+    {
+      "name": "sourcesElements",
+      "attributes": {
+        "org.gradle.category": "documentation",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.docstype": "sources",
+        "org.gradle.usage": "java-runtime"
+      },
+      "files": [
+        {
+          "name": "asciidoctorj-api-2.5.7-sources.jar",
+          "url": "asciidoctorj-api-2.5.7-sources.jar",
+          "size": 60600,
+          "sha512": "79a85aa5ff7e6486e89abe3fe74ec99a16732e4d16c8147d3f4700fd2fa91eb9d37cffd3fa039176772f28cfa3a0062a8199ecf860f5c6a12d6fbded093c4688",
+          "sha256": "794195e1dbc8d7bf959e09fc0eb8082e3c8e57c92456623e7a38fbfea4c29c67",
+          "sha1": "d8e5675e70420a9d1f634de07d996a1061d4a71a",
+          "md5": "c9a8dbf4d221619c05c354438fec4b8c"
+        }
+      ]
+    }
+  ]
+}

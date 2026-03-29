@@ -1,0 +1,80 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "com.github.gestalt-config",
+    "module": "gestalt-core",
+    "version": "0.37.0",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "9.2.1"
+    }
+  },
+  "variants": [
+    {
+      "name": "apiElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 11,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-api"
+      },
+      "files": [
+        {
+          "name": "gestalt-core-0.37.0.jar",
+          "url": "gestalt-core-0.37.0.jar",
+          "size": 495850,
+          "sha512": "11e09c2b3c3725a6aa9d1acd406172a464bb50e3076cb25174df69559348d4ca32bdd51afdcb7f33b065df64ee95f77b1723bf766e8429fc11d0bfe0addcd601",
+          "sha256": "0c6dd44e67bd1ad42c1d9e75fe4198fadfc018dfdb6d115f33de66f914fba863",
+          "sha1": "8d17320c2b866b7cef9db8e73acc72579f6c2db7",
+          "md5": "eb17ac0c0863bdfa8ad2b3ce2bb9e72e"
+        }
+      ]
+    },
+    {
+      "name": "runtimeElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 11,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-runtime"
+      },
+      "files": [
+        {
+          "name": "gestalt-core-0.37.0.jar",
+          "url": "gestalt-core-0.37.0.jar",
+          "size": 495850,
+          "sha512": "11e09c2b3c3725a6aa9d1acd406172a464bb50e3076cb25174df69559348d4ca32bdd51afdcb7f33b065df64ee95f77b1723bf766e8429fc11d0bfe0addcd601",
+          "sha256": "0c6dd44e67bd1ad42c1d9e75fe4198fadfc018dfdb6d115f33de66f914fba863",
+          "sha1": "8d17320c2b866b7cef9db8e73acc72579f6c2db7",
+          "md5": "eb17ac0c0863bdfa8ad2b3ce2bb9e72e"
+        }
+      ]
+    },
+    {
+      "name": "sourcesElements",
+      "attributes": {
+        "org.gradle.category": "documentation",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.docstype": "sources",
+        "org.gradle.usage": "java-runtime"
+      },
+      "files": [
+        {
+          "name": "gestalt-core-0.37.0-sources.jar",
+          "url": "gestalt-core-0.37.0-sources.jar",
+          "size": 269123,
+          "sha512": "a7bcc8aa015d60174d5181846f1e25de32020a2d2026b2f63344d98d9b7d2664392dcd9c82629eedb90592db0962c78e1b96d34f277f07a823bd4712402ec91f",
+          "sha256": "cb36026173aefe9e50047f579c8433d6f05563e6e58039d195d897087d9d51c5",
+          "sha1": "4da1b9cf0204fa2bcf0b086415965c18c8656e9d",
+          "md5": "ee972bec7724460252143d014b5330a6"
+        }
+      ]
+    }
+  ]
+}

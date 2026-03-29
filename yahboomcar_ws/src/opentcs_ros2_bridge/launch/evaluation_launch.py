@@ -15,10 +15,10 @@ from launch_ros.actions import Node
 # 🚀 核心配置：在这里定义你要同时跑的车辆 
 # ==========================================
 VEHICLES = [
-    # 车1：端口 9091，出生在 (0.0, 0.0)
-    {'name': 'vehicle_1', 'port': 9091, 'init_x': 0.0, 'init_y': 0.0, 'init_yaw': 0.0},
-    # 车2：端口 9092，出生在 (0.0, 1.5) 以防止重叠
-    {'name': 'vehicle_2', 'port': 9092, 'init_x': 0.0, 'init_y': 1.5, 'init_yaw': 0.0},
+    # 车1：9091，对齐 opentcs_plant_model_hub_m.json 的 E-P0（0mm,7500mm -> 0.0m,7.5m）
+    {'name': 'vehicle_1', 'port': 9091, 'init_x': 0.0, 'init_y': 7.5, 'init_yaw': 0.0},
+    # 车2：9092，对齐 W-P0（1000mm,2500mm -> 1.0m,2.5m）
+    {'name': 'vehicle_2', 'port': 9092, 'init_x': 1.0, 'init_y': 2.5, 'init_yaw': 0.0},
     # 车3：如果有需要，解开下面这行的注释即可
     # {'name': 'vehicle_3', 'port': 9093, 'init_x': 0.0, 'init_y': -1.5, 'init_yaw': 0.0},
 ]

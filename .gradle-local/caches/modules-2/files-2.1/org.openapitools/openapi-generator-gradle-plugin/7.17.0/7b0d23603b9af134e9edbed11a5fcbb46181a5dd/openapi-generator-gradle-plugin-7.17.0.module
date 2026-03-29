@@ -1,0 +1,131 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "org.openapitools",
+    "module": "openapi-generator-gradle-plugin",
+    "version": "7.17.0",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "7.6.4"
+    }
+  },
+  "variants": [
+    {
+      "name": "apiElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.environment": "standard-jvm",
+        "org.gradle.jvm.version": 11,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-api",
+        "org.jetbrains.kotlin.platform.type": "jvm"
+      },
+      "files": [
+        {
+          "name": "openapi-generator-gradle-plugin-7.17.0.jar",
+          "url": "openapi-generator-gradle-plugin-7.17.0.jar",
+          "size": 108968,
+          "sha512": "bc5e18b3da17af28d99a6c561d2cd298eb77e302f66d8c191acdeb99fe84328a9d896cebda3197dca8619b1f40f37d0d74336cead1d29031e464afa75ac6759e",
+          "sha256": "7bd6b230f214c4a4d4e0a4c03dd177f5e999745e16088de06db1b4713d549162",
+          "sha1": "0321da3e140c068814e1d894aa7dcc0c5b711570",
+          "md5": "127b14101997eb72d952ddc148e99b38"
+        }
+      ]
+    },
+    {
+      "name": "runtimeElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.environment": "standard-jvm",
+        "org.gradle.jvm.version": 11,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-runtime",
+        "org.jetbrains.kotlin.platform.type": "jvm"
+      },
+      "dependencies": [
+        {
+          "group": "org.openapitools",
+          "module": "openapi-generator",
+          "version": {
+            "requires": "7.17.0"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "openapi-generator-gradle-plugin-7.17.0.jar",
+          "url": "openapi-generator-gradle-plugin-7.17.0.jar",
+          "size": 108968,
+          "sha512": "bc5e18b3da17af28d99a6c561d2cd298eb77e302f66d8c191acdeb99fe84328a9d896cebda3197dca8619b1f40f37d0d74336cead1d29031e464afa75ac6759e",
+          "sha256": "7bd6b230f214c4a4d4e0a4c03dd177f5e999745e16088de06db1b4713d549162",
+          "sha1": "0321da3e140c068814e1d894aa7dcc0c5b711570",
+          "md5": "127b14101997eb72d952ddc148e99b38"
+        }
+      ]
+    },
+    {
+      "name": "sourcesElements",
+      "attributes": {
+        "org.gradle.category": "documentation",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.docstype": "sources",
+        "org.gradle.usage": "java-runtime"
+      },
+      "files": [
+        {
+          "name": "openapi-generator-gradle-plugin-7.17.0-sources.jar",
+          "url": "openapi-generator-gradle-plugin-7.17.0-sources.jar",
+          "size": 21876,
+          "sha512": "9ad04f256d8af791a87a316c6e838101940fe516d2de674cc4cfbf019872c578579af8cef7b4646c3e4a65f18085b905c874a5f61c09a8595ec41492dbd029af",
+          "sha256": "298867433bf72ec9dae3e9130f9bf809dbad9771e7e6da073251203015b88d61",
+          "sha1": "3b05d888e4d6c6aab99c72077ac887808c9b50bb",
+          "md5": "45b22001f564199a91c8ecc51980be2e"
+        },
+        {
+          "name": "openapi-generator-gradle-plugin-7.17.0-sources.jar",
+          "url": "openapi-generator-gradle-plugin-7.17.0-sources.jar",
+          "size": 21876,
+          "sha512": "9ad04f256d8af791a87a316c6e838101940fe516d2de674cc4cfbf019872c578579af8cef7b4646c3e4a65f18085b905c874a5f61c09a8595ec41492dbd029af",
+          "sha256": "298867433bf72ec9dae3e9130f9bf809dbad9771e7e6da073251203015b88d61",
+          "sha1": "3b05d888e4d6c6aab99c72077ac887808c9b50bb",
+          "md5": "45b22001f564199a91c8ecc51980be2e"
+        }
+      ]
+    },
+    {
+      "name": "javadocElements",
+      "attributes": {
+        "org.gradle.category": "documentation",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.docstype": "javadoc",
+        "org.gradle.usage": "java-runtime"
+      },
+      "files": [
+        {
+          "name": "openapi-generator-gradle-plugin-7.17.0-javadoc.jar",
+          "url": "openapi-generator-gradle-plugin-7.17.0-javadoc.jar",
+          "size": 261,
+          "sha512": "0a143bf927b467c3bcc965128a7ba0e6d9af2d9b6e8b95d18f79bc16e594565fe4b6eec227a59b1324c32a93b3bb0b7ddb832e1bf9a5b7529f84c4d1a4fc60cc",
+          "sha256": "1e9b20b43a74eab540f07e27d3e4a926241eada8a7d5a5ad09eecfe5ea03bf71",
+          "sha1": "5e46a4711dcf00ef883db88354657264513d2cf5",
+          "md5": "5973f429317ee4737110380dea4dc90e"
+        },
+        {
+          "name": "openapi-generator-gradle-plugin-7.17.0-javadoc.jar",
+          "url": "openapi-generator-gradle-plugin-7.17.0-javadoc.jar",
+          "size": 261,
+          "sha512": "0a143bf927b467c3bcc965128a7ba0e6d9af2d9b6e8b95d18f79bc16e594565fe4b6eec227a59b1324c32a93b3bb0b7ddb832e1bf9a5b7529f84c4d1a4fc60cc",
+          "sha256": "1e9b20b43a74eab540f07e27d3e4a926241eada8a7d5a5ad09eecfe5ea03bf71",
+          "sha1": "5e46a4711dcf00ef883db88354657264513d2cf5",
+          "md5": "5973f429317ee4737110380dea4dc90e"
+        }
+      ]
+    }
+  ]
+}

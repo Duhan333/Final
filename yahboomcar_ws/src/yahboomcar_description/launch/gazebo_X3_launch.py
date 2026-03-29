@@ -7,6 +7,7 @@ from ament_index_python.packages import get_package_share_directory
 
 from launch import LaunchDescription
 from launch.actions import DeclareLaunchArgument
+from launch.actions import LogInfo
 from launch.actions import OpaqueFunction
 from launch.actions import SetEnvironmentVariable
 from launch.conditions import IfCondition
@@ -16,6 +17,11 @@ from launch.actions import IncludeLaunchDescription
 from launch.launch_description_sources import PythonLaunchDescriptionSource
 
 from launch_ros.actions import Node
+
+
+def _detect_wsl():
+    """WSL1/WSL2：宿主图形栈经 WSLg 转发时 Ogre 常踩 GL 驱动坑，默认开软件光栅 + Qt 修复。"""
+    return bool(os.environ.get('WSL_DISTRO_NAME') or os.environ.get('WSL_INTEROP'))
 
 
 def _include_gz_sim(context):
@@ -65,36 +71,63 @@ def _robot_state_publisher(context, *_args, **_kwargs):
             {'robot_description': robot_description},
         ],
     )
-    # 与 rsp 共用 URDF 字符串；麦轮为 continuous，需 /joint_states 才有轮子 TF（默认零位即可消 RViz 报错）
+    # Humble 的 joint_state_publisher：未传 URDF 路径时会订阅 /robot_description 话题，而 RSP 默认不发该话题 → 永远
+    # Waiting...；麦轮 continuous 需 /joint_states 才更新轮子的 TF。
     jsp = Node(
         package='joint_state_publisher',
         executable='joint_state_publisher',
         output='screen',
-        parameters=[
-            {'use_sim_time': use_sim_time},
-            {'robot_description': robot_description},
-        ],
+        arguments=[model_path],
+        parameters=[{'use_sim_time': use_sim_time}],
     )
     return [rsp, jsp]
 
 
+def _gz_parameter_bridge(context, *_args, **_kwargs):
+    """Gazebo 传输层激光话题名须与 `ign topic -l` 一致；桥接后仅发布到内部 ROS 话题，对外 /scan 由 gz_laser_scan_relay 写 frame_id 与 stamp。"""
+    default_lidar = '/scan'
+    topic = LaunchConfiguration('gz_lidar_topic').perform(context).strip()
+    if not topic:
+        topic = default_lidar
+    raw_ros = LaunchConfiguration('ros_gz_laser_raw_topic').perform(context).strip()
+    if not raw_ros:
+        raw_ros = '/gz_bridge/scan_raw'
+    lidar_arg = f'{topic}@sensor_msgs/msg/LaserScan[gz.msgs.LaserScan'
+    # 桥接器必须保持 use_sim_time=false：若与 launch 同步为 true，会等 /clock 才推进时间，
+    # 而 /clock 又由本进程从 Gazebo 转出 → 死锁，表现为 /clock 永不出现、ros2 topic echo 无输出。
+    return [
+        Node(
+            package='ros_gz_bridge',
+            executable='parameter_bridge',
+            arguments=[
+                '/clock@rosgraph_msgs/msg/Clock[gz.msgs.Clock',
+                '/model/yahboomcar/cmd_vel@geometry_msgs/msg/Twist@gz.msgs.Twist',
+                '/model/yahboomcar/odometry@nav_msgs/msg/Odometry@gz.msgs.Odometry',
+                lidar_arg,
+            ],
+            remappings=[(topic, raw_ros)],
+            parameters=[{'use_sim_time': False}],
+            output='screen',
+        ),
+    ]
+
+
 def _gz_odom_scan_relays(context, *_args, **_kwargs):
-    """gazebo_topic_relay 与 gz_laser_scan_relay 共用一套时间策略，避免 launch 与代码默认值不一致。"""
-    world_name = 'yahboomcar_world'
-    default_gz_lidar_topic = (
-        f'/world/{world_name}/model/yahboomcar/link/laser_link/sensor/lidar/scan'
-    )
+    """cmd_vel/odom 中继 + 激光：relay 改写 frame_id；scan 时间戳默认保留桥接原值（Cartographer 需单调递增）。"""
     use_sim_time = LaunchConfiguration('use_sim_time').perform(context).lower() in (
         'true', '1', 'yes',
     )
     sync = LaunchConfiguration('sync_odom_stamp_to_clock').perform(context).lower() in (
         'true', '1', 'yes',
     )
-    gz_lidar_topic = LaunchConfiguration('gz_lidar_topic').perform(context)
-    if not (gz_lidar_topic or '').strip():
-        gz_lidar_topic = default_gz_lidar_topic
-
-    relay = Node(
+    align_scan = LaunchConfiguration('align_scan_stamp_to_odom').perform(context).lower() in (
+        'true', '1', 'yes',
+    )
+    raw_ros = LaunchConfiguration('ros_gz_laser_raw_topic').perform(context).strip()
+    if not raw_ros:
+        raw_ros = '/gz_bridge/scan_raw'
+    scan_frame = LaunchConfiguration('scan_frame_id').perform(context).strip() or 'laser_link'
+    relay_odom = Node(
         package='yahboomcar_description',
         executable='gazebo_topic_relay',
         parameters=[
@@ -105,26 +138,24 @@ def _gz_odom_scan_relays(context, *_args, **_kwargs):
         ],
         output='screen',
     )
-    scan_relay = Node(
+    relay_scan = Node(
         package='yahboomcar_description',
         executable='gz_laser_scan_relay',
         parameters=[
             {'use_sim_time': use_sim_time},
-            {'gz_scan_topic': gz_lidar_topic},
+            {'gz_scan_topic': raw_ros},
             {'output_topic': '/scan'},
-            {'frame_id': 'laser_link'},
+            {'frame_id': scan_frame},
             {'odom_topic': '/odom'},
-            {'align_scan_stamp_to_odom': True},
-            # True：/scan.stamp = 最近 /odom.header（与已发布 odom TF 同拍）；勿用 now() 以免 stamp 晚于 TF
+            {'align_scan_stamp_to_odom': align_scan},
             {'scan_stamp_use_sim_time': True},
         ],
         output='screen',
     )
-    return [relay, scan_relay]
+    return [relay_odom, relay_scan]
 
 
 def generate_launch_description():
-    use_sim_time = LaunchConfiguration('use_sim_time', default='true')
     pkg_yahboomcar = get_package_share_directory('yahboomcar_description')
     # 工作机上常见有两套 overlay（~/Final/install 与 ~/Final/yahboomcar_ws/install）；
     # 若 model:// 命中旧 overlay，会导致传感器配置与当前源码不一致。
@@ -136,37 +167,30 @@ def generate_launch_description():
     else:
         models_dir = os.path.join(pkg_yahboomcar, 'models')
         worlds_dir = os.path.join(pkg_yahboomcar, 'worlds')
-    # 须与 yahboomcar_empty.world 中 <world name="..."> 一致，供 LiDAR 桥接话题名
-    world_name = 'yahboomcar_world'
-    default_gz_lidar_topic = f'/world/{world_name}/model/yahboomcar/link/laser_link/sensor/lidar/scan'
+    # Gazebo 侧激光话题：以 `ign topic -l | grep scan` 为准；默认 /scan（非 /world/.../sensor/...）
+    default_gz_lidar_topic = '/scan'
     gz_lidar_topic = LaunchConfiguration('gz_lidar_topic', default=default_gz_lidar_topic)
     default_model_path = os.path.join(pkg_yahboomcar, 'urdf', 'yahboomcar_X3.urdf')
 
-    # Bridge: Gazebo <-> ROS2（仿真时钟 / cmd_vel / odom / lidar）
-    bridge = Node(
-        package='ros_gz_bridge',
-        executable='parameter_bridge',
-        arguments=[
-            # 仿真时间，避免 Nav2 use_sim_time 与 TF 时间戳不一致（TF_OLD_DATA）
-            '/clock@rosgraph_msgs/msg/Clock[gz.msgs.Clock',
-            '/model/yahboomcar/cmd_vel@geometry_msgs/msg/Twist@gz.msgs.Twist',
-            '/model/yahboomcar/odometry@nav_msgs/msg/Odometry@gz.msgs.Odometry',
-            # GZ -> ROS：长话题名上的 LaserScan，再由 gz_laser_scan_relay 转到 /scan
-            [gz_lidar_topic, '@sensor_msgs/msg/LaserScan[gz.msgs.LaserScan'],
-        ],
-        parameters=[{'use_sim_time': use_sim_time}],
-        output='screen',
-    )
-
-    libgl_software = LaunchConfiguration('libgl_software', default='false')
-    fix_qt_x11 = LaunchConfiguration('fix_qt_x11', default='false')
+    _wsl = _detect_wsl()
+    _def_libgl = 'true' if _wsl else 'false'
+    _def_fix_qt = 'true' if _wsl else 'false'
+    libgl_software = LaunchConfiguration('libgl_software', default=_def_libgl)
+    fix_qt_x11 = LaunchConfiguration('fix_qt_x11', default=_def_fix_qt)
+    default_rviz_config = os.path.join(pkg_yahboomcar, 'rviz', 'yahboomcar.rviz')
 
     return LaunchDescription([
+        LogInfo(
+            msg=(
+                '\n[gazebo_X3] 本终端请保持运行。另开终端检查话题前必须 source humble + '
+                '本工作空间 install，再 ros2 topic list（应含 /clock、/gz_bridge/scan_raw 与 /scan）。\n'
+            )
+        ),
         DeclareLaunchArgument(
             'headless',
             default_value='false',
-            description='true=仅启动 Gazebo 仿真服务器（gz sim -s），不打开 3D 窗口。'
-                        '虚拟机里 GUI 闪烁、黑屏、看不见模型时推荐；用 RViz 看地图与激光。',
+            description='true=仅 gz sim -s 无 Gazebo 窗口；默认 false（在 Gazebo 里看仿真、配合建图）。'
+                        'WSL 若仍崩可再试 headless:=true + RViz。',
         ),
         DeclareLaunchArgument(
             'headless_rendering',
@@ -176,15 +200,15 @@ def generate_launch_description():
         ),
         DeclareLaunchArgument(
             'libgl_software',
-            default_value='false',
-            description='true=设置 LIBGL_ALWAYS_SOFTWARE=1（仅无 3D 的虚拟机需要）。'
-                        '已开启虚拟机 3D 加速时必须保持 false，否则 EGL 会报 '
-                        '"Not allowed to force software rendering when API selects hardware".',
+            default_value=_def_libgl,
+            description='true=LIBGL_ALWAYS_SOFTWARE=1（Mesa 软件光栅，缓解 WSL 上 Ogre copyTo 崩溃）。'
+                        '检测到 WSL 时默认 true；本机 Linux 独显正常时默认 false。'
+                        '若报 EGL “force software rendering” 错误则传 libgl_software:=false。',
         ),
         DeclareLaunchArgument(
             'fix_qt_x11',
-            default_value='false',
-            description='true=设置 QT_QPA_PLATFORM=xcb、QT_X11_NO_MITSHM=1，部分 Wayland/虚拟机下可减轻 Gazebo 窗口闪烁（仍异常时请用 headless:=true）。',
+            default_value=_def_fix_qt,
+            description='true=QT_QPA_PLATFORM=xcb、QT_X11_NO_MITSHM=1。WSLg 下默认 true；原生桌面可传 false。',
         ),
         SetEnvironmentVariable(
             name='LIBGL_ALWAYS_SOFTWARE',
@@ -210,21 +234,57 @@ def generate_launch_description():
             'sync_odom_stamp_to_clock',
             default_value='true',
             description='true：/odom 与 odom→base_footprint TF 使用 get_clock().now()；'
-                        'false：沿用 Gazebo 里程计消息时间戳。/scan 始终与最近 /odom.header 对齐。',
+                        'false：沿用 Gazebo 里程计消息时间戳。',
         ),
         DeclareLaunchArgument(
             'gz_lidar_topic',
             default_value=default_gz_lidar_topic,
-            description='Gazebo LaserScan topic to bridge/relay to /scan (e.g. /lidar).',
+            description='Gazebo 传输层 LaserScan（ign topic -l），默认 /scan；经 parameter_bridge→ros_gz_laser_raw_topic，'
+                        '再由 gz_laser_scan_relay 发布对外 /scan（header.frame_id=scan_frame_id）。',
+        ),
+        DeclareLaunchArgument(
+            'ros_gz_laser_raw_topic',
+            default_value='/gz_bridge/scan_raw',
+            description='桥接器在 ROS 侧发布的原始 LaserScan（勿与 /scan 混用）；gz_laser_scan_relay 订阅此话题。',
+        ),
+        DeclareLaunchArgument(
+            'scan_frame_id',
+            default_value='laser_link',
+            description='写入 /scan.header.frame_id，须与 URDF 雷达 link 一致；多车时可改为命名空间前缀形式。',
+        ),
+        DeclareLaunchArgument(
+            'align_scan_stamp_to_odom',
+            default_value='false',
+            description='true：/scan.header.stamp 与最近一条 /odom 相同（利于部分 AMCL/RViz）。'
+                        'false（默认）：/scan 用 get_clock().now() 单调 stamp，与 sync 后的 odom TF 同基准，供 Cartographer。',
         ),
         DeclareLaunchArgument(
             'model',
             default_value=default_model_path,
             description='X3 URDF 路径（默认 share 下 yahboomcar_X3.urdf；纯 URDF 无需 xacro）。',
         ),
+        DeclareLaunchArgument(
+            'rviz',
+            default_value='false',
+            description='true=同时启动 RViz2（默认 false，建图时多用 Gazebo 窗口 + 另开 cartographer/rviz）。',
+        ),
+        DeclareLaunchArgument(
+            'rviz_config',
+            default_value=default_rviz_config,
+            description='RViz2 配置文件路径（默认 share/rviz/yahboomcar.rviz）。',
+        ),
         OpaqueFunction(function=_include_gz_sim),
-        bridge,
+        OpaqueFunction(function=_gz_parameter_bridge),
         OpaqueFunction(function=_gz_odom_scan_relays),
         # 与 URDF 一致发布 base_footprint→base_link→laser_link…；读文件而非调用 xacro，避免未 source 时找不到 xacro
         OpaqueFunction(function=_robot_state_publisher),
+        Node(
+            package='rviz2',
+            executable='rviz2',
+            name='rviz2',
+            output='screen',
+            arguments=['-d', LaunchConfiguration('rviz_config')],
+            parameters=[{'use_sim_time': LaunchConfiguration('use_sim_time')}],
+            condition=IfCondition(LaunchConfiguration('rviz')),
+        ),
     ])

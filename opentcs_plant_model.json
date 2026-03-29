@@ -119,5 +119,10 @@
     "layerGroups": [ { "id": 0, "name": "Default layer group", "visible": true } ],
     "properties": []
   },
-  "properties": []
+  "properties": [
+    {
+      "name": "tcs:note",
+      "value": "Minimal 2-point sample; default workflow uses opentcs_plant_model_hub_m.json"
+    }
+  ]
 }

@@ -1,0 +1,109 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "org.barfuin.gradle.jacocolog",
+    "module": "gradle-jacoco-log",
+    "version": "3.1.0",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "7.6"
+    }
+  },
+  "variants": [
+    {
+      "name": "apiElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 8,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-api"
+      },
+      "files": [
+        {
+          "name": "gradle-jacoco-log-3.1.0.jar",
+          "url": "gradle-jacoco-log-3.1.0.jar",
+          "size": 30537,
+          "sha512": "3414536f32959c1c8a1b64976ff4f87abccbb546971eea56aebcb42cbd6cb2c9ee6610ff974bf6611a17081e70faa328998be0597ce03200ed6d4e75975a6397",
+          "sha256": "b1a47446e58a0d09cef7a76c28b0f68e23f7e71f059a3eb236738831913e5afb",
+          "sha1": "7955f7dadc99a14ce51def61fdf244bd50ae05b1",
+          "md5": "f2e05f513e55db862e342e4db88a0505"
+        }
+      ]
+    },
+    {
+      "name": "runtimeElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 8,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-runtime"
+      },
+      "dependencies": [
+        {
+          "group": "org.apache.commons",
+          "module": "commons-lang3",
+          "version": {
+            "requires": "3.12.0"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "gradle-jacoco-log-3.1.0.jar",
+          "url": "gradle-jacoco-log-3.1.0.jar",
+          "size": 30537,
+          "sha512": "3414536f32959c1c8a1b64976ff4f87abccbb546971eea56aebcb42cbd6cb2c9ee6610ff974bf6611a17081e70faa328998be0597ce03200ed6d4e75975a6397",
+          "sha256": "b1a47446e58a0d09cef7a76c28b0f68e23f7e71f059a3eb236738831913e5afb",
+          "sha1": "7955f7dadc99a14ce51def61fdf244bd50ae05b1",
+          "md5": "f2e05f513e55db862e342e4db88a0505"
+        }
+      ]
+    },
+    {
+      "name": "javadocElements",
+      "attributes": {
+        "org.gradle.category": "documentation",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.docstype": "javadoc",
+        "org.gradle.usage": "java-runtime"
+      },
+      "files": [
+        {
+          "name": "gradle-jacoco-log-3.1.0-javadoc.jar",
+          "url": "gradle-jacoco-log-3.1.0-javadoc.jar",
+          "size": 56736,
+          "sha512": "1a906d2b70d349d8b9710cf3034854de03cdf1964e582ddee1360d3343653ca1b1a08c0c22678868e015b0d3b4f0af76d0f953fd4f7c4ffec8d2cbb14f251d48",
+          "sha256": "8eba52d8c4e731b387397d98d5abaac4c6f5822ed6fb7c281ca4649b2b7476ca",
+          "sha1": "8ed7355edad195b5d308dc303a6ca868d1c4c118",
+          "md5": "2fd03816761db59ed0b4f9be0a161985"
+        }
+      ]
+    },
+    {
+      "name": "sourcesElements",
+      "attributes": {
+        "org.gradle.category": "documentation",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.docstype": "sources",
+        "org.gradle.usage": "java-runtime"
+      },
+      "files": [
+        {
+          "name": "gradle-jacoco-log-3.1.0-sources.jar",
+          "url": "gradle-jacoco-log-3.1.0-sources.jar",
+          "size": 18287,
+          "sha512": "054163d69f294f6de9594910c293be9a0e058d5576fda50ddf6a54dd8aa065025ba3fdfd1c90d545abc32d77eebe7af4243e223615a9f28cede0d2702eade949",
+          "sha256": "a1231d17cc963cd6241c73d3060040b28297839b7f331ff9c09c1cc01c6e1f3c",
+          "sha1": "44fbad651ddb25d728a370c11b12cc39d746f643",
+          "md5": "1ef2f60533d26035d1353c917b5eb13c"
+        }
+      ]
+    }
+  ]
+}

@@ -67,11 +67,10 @@
           <ambient>0.875 0.875 0.875 1</ambient>
         </material>
       </visual>
-      <!-- 2D 激光：尽量走软件/CPU 路径，减少对 VM 图形栈依赖 -->
-      <sensor name="lidar" type="lidar">
+      <!-- gpu_lidar 必须用内层 <lidar>（见 gz-sim ign-gazebo6 examples/worlds/gpu_lidar_sensor.sdf）；用 <ray> 会导致传感器不发布 -->
+      <sensor name="lidar" type="gpu_lidar">
         <pose>0 0 0 0 0 0</pose>
         <topic>scan</topic>
-        <gz_frame_id>laser_link</gz_frame_id>
         <update_rate>20</update_rate>
         <lidar>
           <scan>
@@ -94,8 +93,7 @@
             <resolution>0.01</resolution>
           </range>
         </lidar>
-        <always_on>1</always_on>
-        <!-- VM 无 GPU 时 visualize 可能拖垮渲染管线；CPU lidar 射线不依赖可视化 -->
+        <always_on>true</always_on>
         <visualize>false</visualize>
       </sensor>
     </link>

@@ -1,0 +1,78 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "io.github.gradle-nexus",
+    "module": "publish-plugin",
+    "version": "2.0.0",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "8.6"
+    }
+  },
+  "variants": [
+    {
+      "name": "shadowRuntimeElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "shadowed",
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-runtime"
+      },
+      "files": [
+        {
+          "name": "publish-plugin-2.0.0.jar",
+          "url": "publish-plugin-2.0.0.jar",
+          "size": 3332615,
+          "sha512": "ee94af3b0370be2d171b5d471620a3a4efc698be62d35fcc617db9359805e2029e3cf9d2b5707a5daec4d48a373e4a8a8f67fe26e748aff0fb08038f9fcbb3ce",
+          "sha256": "942c1a16d161f64631901b4e2dad541d2fcbfe51cf0323955dabe02e2a9ef2aa",
+          "sha1": "f7afd5bc46da8059edb1d7f05163ce096d9e4c18",
+          "md5": "270c836d1a1e68c1f608eacdb158e4f7"
+        }
+      ]
+    },
+    {
+      "name": "javadocElements",
+      "attributes": {
+        "org.gradle.category": "documentation",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.docstype": "javadoc",
+        "org.gradle.usage": "java-runtime"
+      },
+      "files": [
+        {
+          "name": "publish-plugin-2.0.0-javadoc.jar",
+          "url": "publish-plugin-2.0.0-javadoc.jar",
+          "size": 261,
+          "sha512": "2f44cc5ad708c0819341640cb514cdedab5e5151dfac231466d1091790fb0d2e7ae79738f3bd7972659c8e12e4e58cfc6e07909b9c4fd3429d64d083555a2e08",
+          "sha256": "32c2c860a95e2ba21b273c2af3cdacabb5d2e5cf6748e3244900da6c11551de7",
+          "sha1": "2e476cf65f516f8c9d6eb2a3a75aeeb7cf383811",
+          "md5": "386a5ca3fc6e7f94e064a9dbde8add33"
+        }
+      ]
+    },
+    {
+      "name": "sourcesElements",
+      "attributes": {
+        "org.gradle.category": "documentation",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.docstype": "sources",
+        "org.gradle.usage": "java-runtime"
+      },
+      "files": [
+        {
+          "name": "publish-plugin-2.0.0-sources.jar",
+          "url": "publish-plugin-2.0.0-sources.jar",
+          "size": 29095,
+          "sha512": "38a5d4359681e3828132f647eadd868ebfd056f2c65c9b174a5f4dfc0b6df1464e0598313d634b97f9c9d0f742292c92c53ee7acf1dcf42b2559ee62c15c4647",
+          "sha256": "82b2c68f5ef17792a80e43ca072f131e2406a5bcfff19a81d09b6b16d781ee62",
+          "sha1": "324384f73910cac1ac37fb53a28eaf7cdd3399ba",
+          "md5": "b965e0f2163c50f592d99510032abb5e"
+        }
+      ]
+    }
+  ]
+}

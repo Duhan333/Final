@@ -1,0 +1,84 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "org.ysb33r.gradle",
+    "module": "grolifant-core",
+    "version": "3.0.1",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "6.6.1",
+      "buildId": "z5dhoy4qabbsji7xgkleg2dxd4"
+    }
+  },
+  "variants": [
+    {
+      "name": "apiElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 8,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-api"
+      },
+      "files": [
+        {
+          "name": "grolifant-core-3.0.1.jar",
+          "url": "grolifant-core-3.0.1.jar",
+          "size": 431155,
+          "sha512": "8b962d4d58cb844aad51a5feac55ab9dfd2b7fa116e3dd2dc97014fd837af0e9a0ae2f48f8e26bc2fc65a93a7cce26b12bf853ebc1398c3da40b8c70b772dffe",
+          "sha256": "e657fb921fb94e8fdc4c20890121cb1663f1e7efafd6b93a6cdf363a959d1201",
+          "sha1": "d4898e72cdbf2233d60f4614000b87c38edc86a9",
+          "md5": "1e97508c65756d7e572275dbcb097cf0"
+        }
+      ]
+    },
+    {
+      "name": "runtimeElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 8,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-runtime"
+      },
+      "dependencies": [
+        {
+          "group": "org.tukaani",
+          "module": "xz",
+          "version": {
+            "requires": "1.6"
+          }
+        },
+        {
+          "group": "org.apache.commons",
+          "module": "commons-collections4",
+          "version": {
+            "requires": "4.4"
+          }
+        },
+        {
+          "group": "org.ysb33r.gradle",
+          "module": "grolifant-rawhide",
+          "version": {
+            "requires": "3.0.1"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "grolifant-core-3.0.1.jar",
+          "url": "grolifant-core-3.0.1.jar",
+          "size": 431155,
+          "sha512": "8b962d4d58cb844aad51a5feac55ab9dfd2b7fa116e3dd2dc97014fd837af0e9a0ae2f48f8e26bc2fc65a93a7cce26b12bf853ebc1398c3da40b8c70b772dffe",
+          "sha256": "e657fb921fb94e8fdc4c20890121cb1663f1e7efafd6b93a6cdf363a959d1201",
+          "sha1": "d4898e72cdbf2233d60f4614000b87c38edc86a9",
+          "md5": "1e97508c65756d7e572275dbcb097cf0"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,140 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "com.fasterxml.jackson.datatype",
+    "module": "jackson-datatype-guava",
+    "version": "2.19.0",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "maven": {
+      "version": "3.9.9"
+    }
+  },
+  "variants": [
+    {
+      "name": "apiElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-api"
+      },
+      "dependencies": [
+        {
+          "group": "com.google.guava",
+          "module": "guava",
+          "version": {
+            "requires": "25.1-jre"
+          }
+        },
+        {
+          "group": "com.fasterxml.jackson.core",
+          "module": "jackson-annotations",
+          "version": {
+            "requires": "2.19.0"
+          }
+        },
+        {
+          "group": "com.fasterxml.jackson.core",
+          "module": "jackson-core",
+          "version": {
+            "requires": "2.19.0"
+          }
+        },
+        {
+          "group": "com.fasterxml.jackson.core",
+          "module": "jackson-databind",
+          "version": {
+            "requires": "2.19.0"
+          }
+        },
+        {
+          "group": "com.fasterxml.jackson",
+          "module": "jackson-bom",
+          "version": {
+            "requires": "2.19.0"
+          },
+          "attributes": {
+            "org.gradle.category": "platform"
+          },
+          "endorseStrictVersions": true
+        }
+      ],
+      "files": [
+        {
+          "name": "jackson-datatype-guava-2.19.0.jar",
+          "url": "jackson-datatype-guava-2.19.0.jar",
+          "size": 113362,
+          "sha512": "c7bdcd76e2091b7c173697f906c467355fc84ac84b955430b94da72c7f23928ca9ecacc4ed8fbf506b55fb20848c545324b7d10270b5869f288f04c1c1829ac5",
+          "sha256": "641946ddbb9506a680c8fe7949b4bbc9853abaceb4cfa7e9a6493cbcdee5dcfc",
+          "sha1": "a51cb153d23d37f0700cd6f3a4de1c3081a49b0c",
+          "md5": "c917f683309253f87b9be2deadc43b7f"
+        }
+      ]
+    },
+    {
+      "name": "runtimeElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-runtime"
+      },
+      "dependencies": [
+        {
+          "group": "com.google.guava",
+          "module": "guava",
+          "version": {
+            "requires": "25.1-jre"
+          }
+        },
+        {
+          "group": "com.fasterxml.jackson.core",
+          "module": "jackson-annotations",
+          "version": {
+            "requires": "2.19.0"
+          }
+        },
+        {
+          "group": "com.fasterxml.jackson.core",
+          "module": "jackson-core",
+          "version": {
+            "requires": "2.19.0"
+          }
+        },
+        {
+          "group": "com.fasterxml.jackson.core",
+          "module": "jackson-databind",
+          "version": {
+            "requires": "2.19.0"
+          }
+        },
+        {
+          "group": "com.fasterxml.jackson",
+          "module": "jackson-bom",
+          "version": {
+            "requires": "2.19.0"
+          },
+          "attributes": {
+            "org.gradle.category": "platform"
+          },
+          "endorseStrictVersions": true
+        }
+      ],
+      "files": [
+        {
+          "name": "jackson-datatype-guava-2.19.0.jar",
+          "url": "jackson-datatype-guava-2.19.0.jar",
+          "size": 113362,
+          "sha512": "c7bdcd76e2091b7c173697f906c467355fc84ac84b955430b94da72c7f23928ca9ecacc4ed8fbf506b55fb20848c545324b7d10270b5869f288f04c1c1829ac5",
+          "sha256": "641946ddbb9506a680c8fe7949b4bbc9853abaceb4cfa7e9a6493cbcdee5dcfc",
+          "sha1": "a51cb153d23d37f0700cd6f3a4de1c3081a49b0c",
+          "md5": "c917f683309253f87b9be2deadc43b7f"
+        }
+      ]
+    }
+  ]
+}

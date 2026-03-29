@@ -64,6 +64,8 @@ public class Ros2TcpBridgeSession {
    * Sends {@code GOAL x y theta} and reads lines until {@code RESULT OK} or {@code RESULT FAILED}.
    *
    * @param configuration bridge connection and timeout settings
+   * @param bridgeHost TCP host (often per-vehicle override of {@code configuration.bridgeHost()})
+   * @param bridgePort TCP port (often per-vehicle override of {@code configuration.bridgePort()})
    * @param goalMetresRadians goal as {@code [x, y, theta]} in metres and radians
    * @param poseListener optional consumer for {@code POSE x y theta} lines (may be {@code null})
    * @return {@code true} if RESULT OK
@@ -71,11 +73,14 @@ public class Ros2TcpBridgeSession {
    */
   public boolean sendGoalWaitResult(
       Ros2AdapterConfiguration configuration,
+      String bridgeHost,
+      int bridgePort,
       double[] goalMetresRadians,
       Consumer<double[]> poseListener
   )
       throws IOException {
     requireNonNull(configuration, "configuration");
+    requireNonNull(bridgeHost, "bridgeHost");
     requireNonNull(goalMetresRadians, "goalMetresRadians");
     if (goalMetresRadians.length < 3) {
       throw new IllegalArgumentException("goalMetresRadians must contain x, y, theta");
@@ -86,8 +91,8 @@ public class Ros2TcpBridgeSession {
       disconnect();
     }
     requireOpenStreams(
-        configuration.bridgeHost(),
-        configuration.bridgePort(),
+        bridgeHost,
+        bridgePort,
         configuration.connectTimeoutMs(),
         persistent
     );

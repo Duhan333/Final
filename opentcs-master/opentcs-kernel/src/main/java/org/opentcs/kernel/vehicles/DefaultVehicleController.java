@@ -726,7 +726,11 @@ public class DefaultVehicleController
     synchronized (commAdapter) {
       // Check if we've actually been waiting for these resources now. If not,
       // let the scheduler know that we don't want them.
-      if (!Objects.equals(
+      // Compare by resource name, not only Set.equals: TCSResource subclasses use identity
+      // equality, so the scheduler may pass a different object instance for the same path/point
+      // than the movement command holds. Refusing here leaves the vehicle stuck in
+      // ALLOCATION_PENDING without a deferred re-queue (see AllocatorTask.checkAllocationsPrepared).
+      if (!matchesPendingAllocation(
           resources,
           commandProcessingTracker.getAllocationPendingResources().orElse(null)
       )) {
@@ -739,6 +743,11 @@ public class DefaultVehicleController
         return false;
       }
 
+      LOG.info(
+          "{}: Accepted scheduler allocation (resources={})",
+          vehicle.getName(),
+          resources.stream().map(TCSResource::getName).sorted().toList()
+      );
       LOG.debug("{}: Accepting allocated resources: {}", vehicle.getName(), resources);
 
       commandProcessingTracker.allocationConfirmed(resources);
@@ -1196,6 +1205,35 @@ public class DefaultVehicleController
   }
 
   /**
+   * Whether the scheduler's allocated resource set corresponds to the resources we requested.
+   * Uses resource names because {@link TCSResource} identity may differ across subsystems.
+   */
+  private boolean matchesPendingAllocation(
+      @Nonnull
+      Set<TCSResource<?>> allocated,
+      @Nullable
+      Set<TCSResource<?>> pending
+  ) {
+    requireNonNull(allocated, "allocated");
+    if (pending == null) {
+      return false;
+    }
+    if (Objects.equals(allocated, pending)) {
+      return true;
+    }
+    if (allocated.size() != pending.size()) {
+      return false;
+    }
+    Set<String> allocatedNames = allocated.stream()
+        .map(TCSResource::getName)
+        .collect(Collectors.toSet());
+    Set<String> pendingNames = pending.stream()
+        .map(TCSResource::getName)
+        .collect(Collectors.toSet());
+    return allocatedNames.equals(pendingNames);
+  }
+
+  /**
    * Allocate the resources needed for executing the next command.
    */
   private void allocateForNextCommand() {
@@ -1209,6 +1247,11 @@ public class DefaultVehicleController
     // Find out which resources are actually needed for the next command.
     Set<TCSResource<?>> nextAllocation
         = commandProcessingTracker.getNextAllocationResources().orElseThrow();
+    LOG.info(
+        "{}: Requesting allocation for next movement (resources={})",
+        vehicle.getName(),
+        nextAllocation.stream().map(TCSResource::getName).sorted().toList()
+    );
     LOG.debug("{}: Requesting allocation of resources: {}", vehicle.getName(), nextAllocation);
     scheduler.allocate(this, nextAllocation);
     commandProcessingTracker.allocationRequested(nextAllocation);

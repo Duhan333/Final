@@ -1,0 +1,146 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "org.asciidoctor",
+    "module": "asciidoctor-gradle-jvm",
+    "version": "4.0.5",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "7.6.3"
+    }
+  },
+  "variants": [
+    {
+      "name": "apiElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 8,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-api"
+      },
+      "dependencies": [
+        {
+          "group": "org.ysb33r.gradle",
+          "module": "grolifant-herd",
+          "version": {
+            "requires": "3.0.1"
+          }
+        },
+        {
+          "group": "org.asciidoctor",
+          "module": "asciidoctor-gradle-base",
+          "version": {
+            "requires": "4.0.5"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "asciidoctor-gradle-jvm-4.0.5.jar",
+          "url": "asciidoctor-gradle-jvm-4.0.5.jar",
+          "size": 184139,
+          "sha512": "9bbcb40943b82246695f1476515d3ae9a5476977bbd54a978272bb67c0165a5891da48538b35655f778ad61773d39dee95265567972c635b6cb44c3d1114f758",
+          "sha256": "3e020e7f350cb6ff2658ff124ea63d42da3dacf6da3b71efe4c7670413369ce9",
+          "sha1": "8f28ff382311b77e6dc5a5c8c26b0a088ce84498",
+          "md5": "46c3fea67502a15834e020f185775c60"
+        }
+      ]
+    },
+    {
+      "name": "runtimeElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 8,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-runtime"
+      },
+      "dependencies": [
+        {
+          "group": "org.ysb33r.gradle",
+          "module": "grolifant-rawhide",
+          "version": {
+            "requires": "3.0.1"
+          }
+        },
+        {
+          "group": "org.ysb33r.gradle",
+          "module": "grolifant-herd",
+          "version": {
+            "requires": "3.0.1"
+          }
+        },
+        {
+          "group": "org.asciidoctor",
+          "module": "asciidoctor-gradle-base",
+          "version": {
+            "requires": "4.0.5"
+          }
+        },
+        {
+          "group": "org.asciidoctor",
+          "module": "asciidoctorj-api",
+          "version": {
+            "requires": "2.5.7"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "asciidoctor-gradle-jvm-4.0.5.jar",
+          "url": "asciidoctor-gradle-jvm-4.0.5.jar",
+          "size": 184139,
+          "sha512": "9bbcb40943b82246695f1476515d3ae9a5476977bbd54a978272bb67c0165a5891da48538b35655f778ad61773d39dee95265567972c635b6cb44c3d1114f758",
+          "sha256": "3e020e7f350cb6ff2658ff124ea63d42da3dacf6da3b71efe4c7670413369ce9",
+          "sha1": "8f28ff382311b77e6dc5a5c8c26b0a088ce84498",
+          "md5": "46c3fea67502a15834e020f185775c60"
+        }
+      ]
+    },
+    {
+      "name": "javadocElements",
+      "attributes": {
+        "org.gradle.category": "documentation",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.docstype": "javadoc",
+        "org.gradle.usage": "java-runtime"
+      },
+      "files": [
+        {
+          "name": "asciidoctor-gradle-jvm-4.0.5-javadoc.jar",
+          "url": "asciidoctor-gradle-jvm-4.0.5-javadoc.jar",
+          "size": 140161,
+          "sha512": "b10830721ef5f0416061f335f4268f04f505e2d7922b6878fc474580fb3805d81cb6309632399066b2a9b950028e4ab1a724d2ed18010731dd54addecca724f1",
+          "sha256": "1c9d3fd53d06f1cbb168f523f7005ced02daba94277f8ccd4432385a3955d5a9",
+          "sha1": "b613006c97cffd03b3988def6208038bebedbeeb",
+          "md5": "58fb80780fbe7f7e9c30994d204d6d33"
+        }
+      ]
+    },
+    {
+      "name": "sourcesElements",
+      "attributes": {
+        "org.gradle.category": "documentation",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.docstype": "sources",
+        "org.gradle.usage": "java-runtime"
+      },
+      "files": [
+        {
+          "name": "asciidoctor-gradle-jvm-4.0.5-sources.jar",
+          "url": "asciidoctor-gradle-jvm-4.0.5-sources.jar",
+          "size": 42484,
+          "sha512": "3a2b7143d20acd7c929701e2264b31b3a2b6fce2b81d44d77cfa8a7585ebb3e375d0854012c15751090092a114af20d192cff52a2ddcb7dcea3233687f82d262",
+          "sha256": "f4ebca4196d3396fdd841d27a7ad77cc14ad76cb7f609a3d891395c6dcd5111d",
+          "sha1": "35bfd5cb57f991263d638bf54d62a2c0a90473e4",
+          "md5": "f7b0027ec9f5d749e2042e046b1df074"
+        }
+      ]
+    }
+  ]
+}

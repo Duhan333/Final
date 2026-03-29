@@ -1,0 +1,10 @@
+---
+description: No physical robot; simulation and validation run in Gazebo
+alwaysApply: true
+---
+
+# 运行前提（硬件）
+
+- **没有真车**：不假设实车底盘、实机激光或现场场地。
+- **后续开发与验证默认在 Gazebo** 中完成（建图、Nav2、与 OpenTCS 桥接联调等）。
+- 给出步骤时优先：**Gazebo 世界 + `use_sim_time` + 仿真传感器话题**；避免把真车 bringup / 实机雷达 launch 当作默认路径。

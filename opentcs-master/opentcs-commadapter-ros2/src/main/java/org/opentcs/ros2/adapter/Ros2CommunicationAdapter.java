@@ -7,6 +7,7 @@ import static java.util.Objects.requireNonNull;
 import com.google.inject.assistedinject.Assisted;
 import jakarta.inject.Inject;
 import java.io.IOException;
+import java.util.Locale;
 import java.util.Iterator;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -41,7 +42,9 @@ import org.slf4j.LoggerFactory;
  * legs (required whenever {@code commandQueueCapacity} is finite).</li>
  * <li>Optional {@code POSE} lines update
  * {@link org.opentcs.drivers.vehicle.VehicleProcessModel#setPose}.</li>
- * <li>Load/unload operations run after navigation with configurable operating time.</li>
+ * <li>Load/unload operations run after navigation with configurable operating time; plain
+ * {@code Move} completes immediately after navigation so resources are released without that
+ * delay.</li>
  * <li>Recharge operations complete navigation first, then simulate charging like the loopback
  * driver.</li>
  * </ul>
@@ -258,8 +261,34 @@ public class Ros2CommunicationAdapter
     requireNonNull(cmd, "cmd");
     requireNonNull(ioExecutor, "ioExecutor");
 
-    final double[] goal;
     final long seq = commandSeq.incrementAndGet();
+
+    // If path is null, vehicle is already at destination point: handle as in-place operation.
+    if (cmd.getStep().getPath() == null) {
+      LOG.info(
+          "{} [seq={}]: Path is null, vehicle is already at {}. Bypassing ROS2 navigation.",
+          getName(),
+          seq,
+          cmd.getStep().getDestinationPoint().getName()
+      );
+
+      getExecutor().execute(() -> getProcessModel().setState(Vehicle.State.EXECUTING));
+
+      ioExecutor.execute(() -> {
+        java.util.concurrent.CountDownLatch opLatch = new java.util.concurrent.CountDownLatch(1);
+        scheduleAfterNavigationSuccess(seq, cmd, opLatch);
+        try {
+          opLatch.await();
+        }
+        catch (InterruptedException e) {
+          LOG.warn("{}: In-place operation interrupted", getName());
+          Thread.currentThread().interrupt();
+        }
+      });
+      return;
+    }
+
+    final double[] goal;
     try {
       goal = Ros2MovementTranslator.goalMetresRadians(cmd, configuration.modelUnitToMetres());
     }
@@ -268,13 +297,15 @@ public class Ros2CommunicationAdapter
     }
 
     LOG.info(
-        "{} [seq={}]: sendCommand start, {} -> GOAL({:.3f},{:.3f},{:.3f})",
+        "{} [seq={}]: sendCommand start, {} -> GOAL({}, {}, {}) at {}:{}",
         getName(),
         seq,
         describeCommand(cmd),
-        goal[0],
-        goal[1],
-        goal[2]
+        String.format(Locale.US, "%.3f", goal[0]),
+        String.format(Locale.US, "%.3f", goal[1]),
+        String.format(Locale.US, "%.3f", goal[2]),
+        effectiveBridgeHost(),
+        effectiveBridgePort()
     );
 
     getExecutor().execute(() -> getProcessModel().setState(Vehicle.State.EXECUTING));
@@ -286,6 +317,8 @@ public class Ros2CommunicationAdapter
     try {
       boolean ok = tcpSession.sendGoalWaitResult(
           configuration,
+          effectiveBridgeHost(),
+          effectiveBridgePort(),
           goal,
           pose -> getExecutor().execute(() -> applyPoseFromRos(pose))
       );
@@ -304,15 +337,27 @@ public class Ros2CommunicationAdapter
         return;
       }
 
-      getExecutor().execute(() -> afterNavigationSuccess(seq, cmd));
+      // Force strict in-order completion: do not let ioExecutor take next command early.
+      java.util.concurrent.CountDownLatch opLatch = new java.util.concurrent.CountDownLatch(1);
+      scheduleAfterNavigationSuccess(seq, cmd, opLatch);
+      opLatch.await();
     }
-    catch (IOException exc) {
-      LOG.warn("{} [seq={}]: ROS2 bridge communication failed, {}", getName(), seq, describeCommand(cmd), exc);
+    catch (IOException | InterruptedException exc) {
+      LOG.warn(
+          "{} [seq={}]: ROS2 bridge communication failed or interrupted, {}",
+          getName(),
+          seq,
+          describeCommand(cmd),
+          exc
+      );
       tcpSession.disconnect();
       getExecutor().execute(() -> {
         getProcessModel().setState(Vehicle.State.IDLE);
         markCommandFailed(cmd);
       });
+      if (exc instanceof InterruptedException) {
+        Thread.currentThread().interrupt();
+      }
     }
   }
 
@@ -353,12 +398,49 @@ public class Ros2CommunicationAdapter
     getProcessModel().setPose(new Pose(new Triple(xMm, yMm, 0L), deg));
   }
 
-  private void afterNavigationSuccess(long seq, MovementCommand cmd) {
+  /**
+   * Runs {@link #afterNavigationSuccess} on the kernel executor; if it throws before any branch
+   * calls {@link java.util.concurrent.CountDownLatch#countDown()}, releases the latch so the
+   * single-threaded {@code ioExecutor} cannot deadlock permanently.
+   */
+  @SuppressWarnings("checkstyle:IllegalCatch")
+  private void scheduleAfterNavigationSuccess(
+      long seq,
+      MovementCommand cmd,
+      java.util.concurrent.CountDownLatch latch
+  ) {
+    getExecutor().execute(() -> {
+      try {
+        afterNavigationSuccess(seq, cmd, latch);
+      }
+      catch (RuntimeException exc) {
+        LOG.error(
+            "{} [seq={}]: afterNavigationSuccess failed, releasing wait latch",
+            getName(),
+            seq,
+            exc
+        );
+        latch.countDown();
+      }
+    });
+  }
+
+  private void afterNavigationSuccess(
+      long seq,
+      MovementCommand cmd,
+      java.util.concurrent.CountDownLatch latch
+  ) {
     updatePositionAndPoseFromPlantModel(cmd);
     if (cmd.hasEmptyOperation()) {
-      LOG.info("{} [seq={}]: reached routing point (empty operation), {}", getName(), seq, describeCommand(cmd));
+      LOG.info(
+          "{} [seq={}]: reached routing point (empty operation), {}",
+          getName(),
+          seq,
+          describeCommand(cmd)
+      );
       getProcessModel().setState(Vehicle.State.IDLE);
       markCommandExecuted(cmd);
+      latch.countDown();
       return;
     }
 
@@ -366,6 +448,7 @@ public class Ros2CommunicationAdapter
     LOG.info("{} [seq={}]: post-nav operation='{}', {}", getName(), seq, op, describeCommand(cmd));
     if (op.equals(configuration.rechargeOperation())) {
       markCommandExecuted(cmd);
+      latch.countDown();
       getProcessModel().setState(Vehicle.State.CHARGING);
       float energy = getProcessModel().getEnergyLevel();
       getExecutor().schedule(
@@ -376,8 +459,26 @@ public class Ros2CommunicationAdapter
       return;
     }
 
-    int delay = Math.max(1, rosModel.getOperatingTime());
-    getExecutor().schedule(() -> applyLoadUnloadAndFinish(cmd), delay, TimeUnit.MILLISECONDS);
+    // Only load/unload need operatingTime after arrival. "Move" (and similar) must call
+    // commandExecuted immediately so the kernel releases path/point allocations (e.g. freeing
+    // Point-C after C→D); otherwise default operatingTime (often 5000ms) blocks other vehicles.
+    if (operationUsesOperatingDelay(op)) {
+      int delay = Math.max(1, rosModel.getOperatingTime());
+      getExecutor().schedule(() -> {
+        applyLoadUnloadAndFinish(cmd);
+        latch.countDown();
+      }, delay, TimeUnit.MILLISECONDS);
+    }
+    else {
+      getProcessModel().setState(Vehicle.State.IDLE);
+      markCommandExecuted(cmd);
+      latch.countDown();
+    }
+  }
+
+  private boolean operationUsesOperatingDelay(String op) {
+    return op.startsWith(rosModel.getLoadOperation())
+        || op.startsWith(rosModel.getUnloadOperation());
   }
 
   private void updatePositionAndPoseFromPlantModel(MovementCommand cmd) {
@@ -437,6 +538,44 @@ public class Ros2CommunicationAdapter
   private enum LoadState {
     EMPTY,
     FULL
+  }
+
+  private String effectiveBridgeHost() {
+    String p = vehicle.getProperty(Ros2AdapterConstants.PROPKEY_BRIDGE_HOST);
+    if (p != null && !p.isBlank()) {
+      return p.trim();
+    }
+    return configuration.bridgeHost();
+  }
+
+  private int effectiveBridgePort() {
+    String p = vehicle.getProperty(Ros2AdapterConstants.PROPKEY_BRIDGE_PORT);
+    if (p != null && !p.isBlank()) {
+      try {
+        int port = Integer.parseInt(p.trim());
+        if (port > 0 && port <= 65535) {
+          return port;
+        }
+        LOG.warn(
+            "{}: Ignoring invalid vehicle property {}={} (expected 1-65535); using kernel {}.",
+            getName(),
+            Ros2AdapterConstants.PROPKEY_BRIDGE_PORT,
+            p.trim(),
+            configuration.bridgePort()
+        );
+      }
+      catch (NumberFormatException exc) {
+        LOG.warn(
+            "{}: Ignoring invalid vehicle property {}={}; using kernel {}.",
+            getName(),
+            Ros2AdapterConstants.PROPKEY_BRIDGE_PORT,
+            p.trim(),
+            configuration.bridgePort(),
+            exc
+        );
+      }
+    }
+    return configuration.bridgePort();
   }
 
   private String describeCommand(MovementCommand cmd) {

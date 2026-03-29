@@ -13,6 +13,11 @@
   <depend>nav_msgs</depend>
   <depend>tf2_ros</depend>
 
+  <!-- cartographer_launch.py / occupancy_grid -->
+  <exec_depend>cartographer_ros</exec_depend>
+  <!-- save_map_launch.py -->
+  <exec_depend>nav2_map_server</exec_depend>
+
   <test_depend>ament_copyright</test_depend>
   <test_depend>ament_flake8</test_depend>
   <test_depend>ament_pep257</test_depend>
